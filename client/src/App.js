@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import HomePage from './components/HomePage'
 import GardensPage from './components/GardensPage'
-// import GardenPage from './components/GardenPage'
+import GardenPage from './components/GardenPage'
 
 class App extends Component {
 
@@ -17,8 +17,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/gardens' component={GardensPage} />
-          {/* <Route path='/gardens/:gardenId' component={GardenPage} /> */}
+          <Route exact path='/gardens' component={GardensPage} />
+          <Route path='/gardens/:gardenId' component={GardenPage} />
         </Switch>
       </Router>
     );

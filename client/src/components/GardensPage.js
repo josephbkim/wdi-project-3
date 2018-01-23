@@ -11,8 +11,6 @@ class GardensPage extends Component {
         this.getAllGardens()
     }
 
-
-
     async getAllGardens() {
         try{
             const res = await axios.get('/api/gardens')
