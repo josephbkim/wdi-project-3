@@ -7,10 +7,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
-
 const app = express();
 
-// DB SETUP
+// ============= DB SETUP ==============
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -41,6 +40,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// CONTROLLERS FOR ROUTES
+const GardensController = require('./controllers/gardensController')
+app.use('/api/gardens', GardensController);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
@@ -58,5 +62,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
