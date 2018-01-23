@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 
 class GardensPage extends Component {
@@ -11,11 +11,16 @@ class GardensPage extends Component {
         this.getAllGardens()
     }
 
-    getAllGardens = () => {
+    async getAllGardens() {
         console.log('GET ALL GARDENS!!!!!')
-        axios.get('/api/gardens').then(res => {
+        try{
+            const res = await axios.get('/api/gardens')
+            const gardens = res.data
             this.setState({ gardens: res.data })
-        })
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     render() {
@@ -28,8 +33,7 @@ class GardensPage extends Component {
                 <h3>Gardens</h3>
                 <div>
                 {this.state.gardens.map(garden => {
-                    // return (<div>{`/gardens/${garden._id}`}>{garden.name}</div>)
-                    return (<div>salsa</div>)
+                    return (<div><Link to={`/gardens/${garden._id}`}>{garden.name}</Link></div>)
                 })}
                 </div>
             </div>

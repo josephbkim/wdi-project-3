@@ -6,12 +6,30 @@ import styled from 'styled-components'
 import HomePage from './components/HomePage'
 
 class App extends Component {
+  // state = {
+  //   gardens: [{
+  //     name: "J's GArden",
+  //     users: [{
+  //         name: "J-Dawg",
+  //         plants: [{
+  //           name: "idk plants",
+  //           type: "uh... red?"
+  //         }]
+  //     }]
+  //   }]
+  // }
+  
   render() {
+    // const gardensComponent = <Gardens gardens={this.state.gardens} />
+    // const plantsComponent = <Plants plants={this.state.gardens.users.plants} />
     return (
-      <div>
-          <h1>Hello from App.js</h1>
+      <Router>
+        <Switch>
           <HomePage />
-      </div>
+          {/* <Route exact path='/' component={HomePage} />
+          <Route path='/gardens' render={gardensComponent} /> */}
+        </Switch>
+      </Router>
     );
   }
 }

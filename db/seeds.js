@@ -184,7 +184,7 @@ Garden.remove({}).then(() => {
     })
     patty.plants.push(hydrangea, daisy, sunflower)
     grantParkGarden.users.push(lindsay, suzeanne, patty)
-//     return grantParkGarden.save()
+    return grantParkGarden.save()
 }).catch((err) => {
     console.log(`*** ERROR SEEDING DATA ${err}`)
 }).then(() => {
