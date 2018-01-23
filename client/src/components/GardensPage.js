@@ -2,21 +2,32 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-class Gardens extends Component {
+class GardensPage extends Component {
+    // state = {
+    //     gardens: []
+    // }
 
-    getAllGardens = () => {
-        axios.get('localhost:4000/api/users').then(res => {
-            this.setState({ gardens: res.data })
-        })
-    }
+    // componentWillMount = () => {
+
+    // }
+
+    // getAllGardens = () => {
+    //     axios.get('localhost:4000/api/users').then(res => {
+    //         this.setState({ gardens: res.data })
+    //     })
+    // }
+
     render() {
         return (
             <div>
-                <h1>Gardens</h1>
-                {this.state.gardens.map(garden => {
-                    return <div>{`/user/${garden._id}`}>{garden.name}</div>
-                })}
+                <h3>Gardens</h3>
+                {/* {this.state.gardens.map(garden => {
+                    return <div>{`/garden/${garden._id}`}>{garden.name}</div>
+                })} */}
             </div>
         )
     }
 }
+
+export default GardensPage
+
