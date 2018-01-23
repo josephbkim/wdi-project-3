@@ -12,4 +12,16 @@ router.get('/', (req, res) => {
         .catch((err) => console.log(err))
 })
 
+router.post('/', (req, res) => {
+    const newGardenInfo = req.body
+    newGarden = Garden.create(newGardenInfo)
+        .then(() => {
+            res.json(newGarden)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+})
+
 module.exports = router;
