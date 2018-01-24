@@ -8,14 +8,23 @@ class UsersList extends Component {
         users: []
     }
 
-    render() {
+    getAllUsers = () => {
+        
+    }
 
+
+
+    render() {
+    //     const userList = this.state.users.map((user, index) => {
+    //         return (<div>test</div>)
+        // })
         
         return (
             <div>
 
                 <div>Hello from Users Page</div>
-            
+                
+                
             </div>
         )
     }
