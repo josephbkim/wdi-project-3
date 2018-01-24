@@ -21,7 +21,8 @@ router.post('/', (req, res) => {
         .catch((err) => {
             console.log(err)
         })
-
 })
+
+router.delete('/:gardenId')
 
 module.exports = router;

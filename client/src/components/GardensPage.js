@@ -35,7 +35,6 @@ class GardensPage extends Component {
 
     }
 
-
     createGarden = async (event) => {
             event.preventDefault()
             const payload = {
@@ -54,11 +53,6 @@ class GardensPage extends Component {
             await axios.post('/api/gardens', payload)
             await this.getAllGardens()
             this.setState({garden: newForm})
-
-            // const newGarden = response.data
-            // const newGardens = [...this.state.gardens]
-            // newGardens.push(newGarden)
-            // this.setState({ gardens: newGardens })
     }
 
     render() {
