@@ -14,7 +14,7 @@ class PlantsList extends Component {
         return (
             <div>
 
-                <div>Hello from Plant Page</div>
+                <div>Hello from Plants Page</div>
 
             </div>
 

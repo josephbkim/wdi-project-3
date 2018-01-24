@@ -15,14 +15,10 @@ class UsersList extends Component {
             <div>
 
                 <div>Hello from Users Page</div>
-
+            
             </div>
-
-
-
         )
     }
-
 }
 
 export default UsersList

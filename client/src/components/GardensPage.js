@@ -46,6 +46,7 @@ class GardensPage extends Component {
                 city: this.state.garden.address,
                 state: this.state.garden.state
             }
+            
             const blankForm = {
                 name: '',
                 address: '',
@@ -61,7 +62,7 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index}><Link to={`/gardens/${garden._id}`}>{garden.name}</Link></div>)
+            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
         })
         
         const FormDiv = styled.div`
