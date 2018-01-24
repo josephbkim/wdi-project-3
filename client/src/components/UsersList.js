@@ -27,9 +27,16 @@ class UsersList extends Component {
         }
     }
 
+    // deleteGarden = async (garden) => {
+    //     console.log("Deleting!")
+    //     await axios.delete(`/api/gardens/${garden._id}`)
+    //     // const gardenIndexToDelete = this.state.garden
+    // }
+
 
 
     render() {
+        const deleteGarden = this.props.deleteGarden
         const garden = this.state.garden
         const gardenId = this.state.garden._id
         const userList = this.state.garden.users.map((user, index) => {
@@ -41,7 +48,7 @@ class UsersList extends Component {
             </div>)
         })
         const userCount = this.state.garden.users.length
-
+        // ======== STYLED COMPONENTS ==========
         const GardenDiv = styled.div`
         border: 5px solid black;
         border-radius: 5px;
@@ -55,7 +62,7 @@ class UsersList extends Component {
         margin: 20px;
         padding: 20px;
         `
-        const Button = styled.div`
+        const Button = styled.button`
         border: 5px solid red;
         border-radius: 5px;
         color: white:
@@ -83,11 +90,11 @@ class UsersList extends Component {
                 </Link>}
 
 
-                {<Link to={`/gardens/${garden._id}/delete`}>
-                    <Button>
+                {/* {<Link to={`/api/gardens/${garden._id}`}> */}
+                    <Button onClick={deleteGarden}>
                         Delete {garden.name}
                     </Button>
-                </Link>}
+                {/* </Link>} */}
 
 
             </div >

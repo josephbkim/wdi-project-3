@@ -38,6 +38,12 @@ class GardensPage extends Component {
 
     }
 
+    deleteGarden = (garden) => {
+        axios.delete(`/api/gardens/${garden._id}`)
+        const indexToDelete = this.state.gardens.indexOf(garden)
+        console.log(`GARDEN IDEA TO DELETE------------${indexToDelete}`)
+    }
+
     createGarden = async (event) => {
             event.preventDefault()
             const payload = {
@@ -62,7 +68,7 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
+            return (<div key={index} deleteGarden={this.state.deleteGarden}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
         })
         
         const FormDiv = styled.div`
