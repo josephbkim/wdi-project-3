@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
+import styled from 'styled-components'
+import {Button, Icon, Input} from 'react-materialize'
 
 class GardensPage extends Component {
     state = {
@@ -43,7 +45,7 @@ class GardensPage extends Component {
                 city: this.state.garden.address,
                 state: this.state.garden.state
             }
-            const newForm = {
+            const blankForm = {
                 name: '',
                 address: '',
                 city: '',
@@ -52,7 +54,7 @@ class GardensPage extends Component {
             
             await axios.post('/api/gardens', payload)
             await this.getAllGardens()
-            this.setState({garden: newForm})
+            this.setState({garden: blankForm})
     }
 
     render() {
@@ -60,6 +62,10 @@ class GardensPage extends Component {
         const gardensList = this.state.gardens.map((garden, index) => {
             return (<div key={index}><Link to={`/gardens/${garden._id}`}>{garden.name}</Link></div>)
         })
+        
+        const FormDiv = styled.div`
+        width: 50%;
+        `
 
         return (
             <div>
@@ -68,7 +74,7 @@ class GardensPage extends Component {
                     {gardensList}
                 </div>
 
-                <div className='new-item-form'>
+                {/* <FormDiv> */}
                     <form onSubmit={this.createGarden}>
                         <div>
                             <label htmlFor="name">Garden Name</label>
@@ -87,11 +93,11 @@ class GardensPage extends Component {
                             <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
                         </div>
                         <div>
-                            <input value="Add Garden" type="submit" />
+                            <Button>Add Garden</Button>
                         </div>
 
                     </form>
-                </div>
+                {/* </FormDiv> */}
 
 
             </div>
