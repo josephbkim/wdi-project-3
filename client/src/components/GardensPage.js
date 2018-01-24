@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import {Button, Icon, Input} from 'react-materialize'
+import SubmitButton from './SubmitButton'
 
 class GardensPage extends Component {
     state = {
@@ -93,7 +94,7 @@ class GardensPage extends Component {
                             <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
                         </div>
                         <div>
-                            <Button>Add Garden</Button>
+                            <SubmitButton />
                         </div>
 
                     </form>
