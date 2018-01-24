@@ -37,6 +37,7 @@ class UsersList extends Component {
 
     render() {
         const deleteGarden = this.props.deleteGarden
+        console.log(`DELETE GARDEN----- ${deleteGarden}`)
         const garden = this.state.garden
         const gardenId = this.state.garden._id
         const userList = this.state.garden.users.map((user, index) => {

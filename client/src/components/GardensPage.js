@@ -4,6 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import {Button, Icon, Input} from 'react-materialize'
 import SubmitButton from './SubmitButton'
+import UsersList from './UsersList'
 
 class GardensPage extends Component {
     state = {
@@ -68,7 +69,7 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index} deleteGarden={this.state.deleteGarden}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
+            return (<div key={index} deleteGarden={this.deleteGarden}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
         })
         
         const FormDiv = styled.div`
