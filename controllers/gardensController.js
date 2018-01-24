@@ -4,7 +4,6 @@ const Garden = require('../db/models/Garden')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    // console.log("TESTING ROUTER. GET IN GARDENS CONTROLLER")
     Garden.find({})
         .then((gardens) => {
             res.json(gardens)
@@ -33,4 +32,4 @@ router.delete('/:gardenId', async (req, res) => {
     }
 })
 
-module.exports = router;
+module.exports = router

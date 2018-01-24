@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import HomePage from './components/HomePage'
 import GardensPage from './components/GardensPage'
 import GardenPage from './components/GardenPage'
+import UsersList from './components/UsersList'
 
 class App extends Component {
 
