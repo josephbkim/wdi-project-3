@@ -23,6 +23,14 @@ router.post('/', (req, res) => {
         })
 })
 
-router.delete('/:gardenId')
+router.delete('/:gardenId', async (req, res) => {
+    try {
+        await Garden.findByIdAndRemove(req.params.gardenId)
+        res.send('completed delete')
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 
 module.exports = router;
