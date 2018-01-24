@@ -5,26 +5,47 @@ import styled from 'styled-components'
 
 class UsersList extends Component {
     state = {
-        users: []
+        garden: {
+            users: []
+        },
+        user: ''
     }
 
-    getAllUsers = () => {
-        
+    componentWillMount = () => {
+        this.getAllUsers()
+    }
+
+    getAllUsers = async () => {
+        try {
+            console.log('getting users')
+            const gardenId = this.props.match.params.gardenId
+            const response = await axios.get(`/api/gardens/${gardenId}/users`)
+            this.setState({ garden: response.data })
+        }
+        catch (err) {
+            console.log(`Catch errror ----- ${err}`)
+        }
     }
 
 
 
     render() {
-    //     const userList = this.state.users.map((user, index) => {
-    //         return (<div>test</div>)
-        // })
         
+        const gardenId = this.state.garden._id
+        const userList = this.state.garden.users.map((user, index) => {
+                return (<div key={index}>
+                    <div>
+                        <Link to={`/gardens/${gardenId}/users/${user._id}`}>{user.firstName}</Link>
+                    </div>
+                    <div>{user.email}</div>
+                        </div>)
+        })
+
         return (
             <div>
-
-                <div>Hello from Users Page</div>
-                
-                
+                <div>{this.state.garden.name}</div>
+                <div>{this.state.garden.address}</div>
+                <div>{userList}</div>
             </div>
         )
     }

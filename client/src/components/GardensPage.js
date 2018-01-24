@@ -22,9 +22,9 @@ class GardensPage extends Component {
 
     async getAllGardens() {
         try {
-            const res = await axios.get('/api/gardens')
-            const gardens = res.data
-            this.setState({ gardens: res.data })
+            const response = await axios.get('/api/gardens')
+            const gardens = response.data
+            this.setState({ gardens: response.data })
         }
         catch (err) {
             console.log(err)
