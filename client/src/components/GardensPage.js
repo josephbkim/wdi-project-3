@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
-import {Button} from 'react-materialize'
+import { Button } from 'react-materialize'
 import SubmitButton from './SubmitButton'
 import UsersList from './UsersList'
 
@@ -27,26 +27,27 @@ class GardensPage extends Component {
             const gardens = response.data
             this.setState({ gardens: response.data })
         }
+        
         catch (err) {
             console.log(err)
         }
     }
 
     handleChange = (event) => {
-        const garden = {...this.state.garden}
+        const garden = { ...this.state.garden }
         garden[event.target.name] = event.target.value
-        this.setState({garden})
+        this.setState({ garden })
     }
 
     deleteGarden = async (garden) => {
         try {
-        console.log(`GARDEN NAME -----${garden.name}`)
-        axios.delete(`/api/gardens/${garden._id}`)
-        const indexToDelete = this.state.gardens.indexOf(garden)
-        const newGardens = [...this.state.gardens]
-        console.log(`GARDEN IDEA TO DELETE------------${indexToDelete}`)
-        newGardens.splice(indexToDelete, 1)
-        this.setState({ gardens: newGardens })
+            console.log(`GARDEN NAME -----${garden.name}`)
+            axios.delete(`/api/gardens/${garden._id}`)
+            const indexToDelete = this.state.gardens.indexOf(garden)
+            const newGardens = [...this.state.gardens]
+            console.log(`GARDEN IDEA TO DELETE------------${indexToDelete}`)
+            newGardens.splice(indexToDelete, 1)
+            this.setState({ gardens: newGardens })
         }
         catch (err) {
             console.log(err)
@@ -54,36 +55,35 @@ class GardensPage extends Component {
     }
 
     createGarden = async (event) => {
-            event.preventDefault()
-            const payload = {
-                name: this.state.garden.name,
-                address: this.state.garden.address,
-                city: this.state.garden.address,
-                state: this.state.garden.state
-            }
-            
-            const blankForm = {
-                name: '',
-                address: '',
-                city: '',
-                state: ''
-            }
-            
-            await axios.post('/api/gardens', payload)
-            await this.getAllGardens()
-            this.setState({garden: blankForm})
+        event.preventDefault()
+        const payload = {
+            name: this.state.garden.name,
+            address: this.state.garden.address,
+            city: this.state.garden.address,
+            state: this.state.garden.state
+        }
+        const blankForm = {
+            name: '',
+            address: '',
+            city: '',
+            state: ''
+        }
+
+        await axios.post('/api/gardens', payload)
+        await this.getAllGardens()
+        this.setState({ garden: blankForm })
     }
 
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
             return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link>
-                    <button onClick={() => this.deleteGarden(garden)}>Delete</button>
-                    </div>)
+                <button onClick={() => this.deleteGarden(garden)}>Delete</button>
+            </div>)
         })
-        
 
-        
+
+
         const GardenForm = styled.form`
         width: 50%;
         `
@@ -94,32 +94,31 @@ class GardensPage extends Component {
                 <div>
                     {gardensList}
                 </div>
-                    
 
-                
-                    <div onSubmit={this.createGarden}>
-                        <div>
-                            <label htmlFor="name">Garden Name</label>
-                            <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
-                        </div>
-                        <div>
-                            <label htmlFor="address">Address</label>
-                            <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
-                        </div>
-                        <div>
-                            <label htmlFor="city">City</label>
-                            <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
-                        </div>
-                        <div>
-                            <label htmlFor="state">State</label>
-                            <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
-                        </div>
-                        <div>
-                            <SubmitButton />
-                        </div>
-
+                {/* <FormDiv> */}
+                <form onSubmit={this.createGarden}>
+                    <div>
+                        <label htmlFor="name">Garden Name</label>
+                        <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
+                    </div>
+                    <div>
+                        <label htmlFor="address">Address</label>
+                        <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
+                    </div>
+                    <div>
+                        <label htmlFor="city">City</label>
+                        <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
+                    </div>
+                    <div>
+                        <label htmlFor="state">State</label>
+                        <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
+                    </div>
+                    <div>
+                        <SubmitButton />
                     </div>
 
+                </form>
+                {/* </FormDiv> */}
 
 
             </div>

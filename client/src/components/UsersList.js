@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import GardenDetail from './GardenDetail'
@@ -41,13 +41,6 @@ class UsersList extends Component {
         const userCount = this.state.garden.users.length
 
         // ======== STYLED COMPONENTS ==========
-        const GardenDiv = styled.div`
-        border: 5px solid black;
-        border-radius: 5px;
-        margin: 20px;
-        padding: 20px;
-        
-        `
         const UserListContainer = styled.div`
         border: 5px solid brown;
         border-radius: 5px;
@@ -62,8 +55,7 @@ class UsersList extends Component {
         `
 
         const UserContainer = styled.div`
-        border: 3px green solid;
-        
+        border: 3px green solid;     
 
         `
 
