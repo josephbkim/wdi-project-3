@@ -3,15 +3,15 @@ const Garden = require('../db/models/Garden')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', (request, response) => {
     Garden.find({})
         .then((gardens) => {
-            res.json(gardens)
+            response.json(gardens)
         })
         .catch((err) => console.log(err))
 })
 
-router.post('/', (req, res) => {
+router.post('/', (request, response) => {
     const newGardenInfo = req.body
     newGarden = Garden.create(newGardenInfo)
         .then(() => {
@@ -22,14 +22,26 @@ router.post('/', (req, res) => {
         })
 })
 
-router.delete('/:gardenId', async (req, res) => {
+router.delete('/:gardenId', async (request, response) => {
     try {
-        await Garden.findByIdAndRemove(req.params.gardenId)
-        res.send('completed delete')
+        await Garden.findByIdAndRemove(request.params.gardenId)
+        response.send('completed delete')
     }
     catch (err) {
         console.log(err)
     }
 })
 
+router.patch('/:gardenId', async (request, response) => {
+    try {
+        const updatedGardenInfo = await Garden.findByIdAndUpdate(request.params.gardenId, request.body, {new: true})
+        garden.name = request.body
+        response.json(garden)
+    }
+    catch (err) {
+        console.log(err)
+        response.sendStatus(500) 
+
+    }
+})
 module.exports = router
