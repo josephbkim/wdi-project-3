@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
-import {Button, Icon, Input} from 'react-materialize'
+import {Button} from 'react-materialize'
 import SubmitButton from './SubmitButton'
 import UsersList from './UsersList'
 
@@ -36,13 +36,21 @@ class GardensPage extends Component {
         const garden = {...this.state.garden}
         garden[event.target.name] = event.target.value
         this.setState({garden})
-
     }
 
-    deleteGarden = (garden) => {
+    deleteGarden = async (garden) => {
+        try {
+        console.log(`GARDEN NAME -----${garden.name}`)
         axios.delete(`/api/gardens/${garden._id}`)
         const indexToDelete = this.state.gardens.indexOf(garden)
+        const newGardens = [...this.state.gardens]
         console.log(`GARDEN IDEA TO DELETE------------${indexToDelete}`)
+        newGardens.splice(indexToDelete, 1)
+        this.setState({ gardens: newGardens })
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
 
     createGarden = async (event) => {
@@ -69,8 +77,12 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index} deleteGarden={this.deleteGarden}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link></div>)
+            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link>
+                    <button onClick={() => this.deleteGarden(garden)}>Delete</button>
+                    </div>)
         })
+        
+
         
         const FormDiv = styled.div`
         width: 50%;

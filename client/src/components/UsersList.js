@@ -27,23 +27,21 @@ class UsersList extends Component {
         }
     }
 
-    // deleteGarden = async (garden) => {
-    //     console.log("Deleting!")
-    //     await axios.delete(`/api/gardens/${garden._id}`)
-    //     // const gardenIndexToDelete = this.state.garden
-    // }
+    deleteGarden = async (garden) => {
+        console.log("Deleting!")
+        await axios.delete(`/api/gardens/${garden._id}`)
+        // const gardenIndexToDelete = this.state.garden
+    }
 
 
 
     render() {
-        const deleteGarden = this.props.deleteGarden
-        console.log(`DELETE GARDEN----- ${deleteGarden}`)
+        console.log(`DELETE GARDEN----- ${this.deleteGarden}`)
         const garden = this.state.garden
-        const gardenId = this.state.garden._id
-        const userList = this.state.garden.users.map((user, index) => {
+        const userList = garden.users.map((user, index) => {
             return (<div key={index}>
                 <div>
-                    <Link to={`/gardens/${gardenId}/users/${user._id}`}>{user.firstName}</Link>
+                    <Link to={`/gardens/${garden._id}/users/${user._id}`}>{user.firstName}</Link>
                 </div>
                 <div>{user.email}</div>
             </div>)
@@ -92,7 +90,7 @@ class UsersList extends Component {
 
 
                 {/* {<Link to={`/api/gardens/${garden._id}`}> */}
-                    <Button onClick={deleteGarden}>
+                    <Button onClick={this.deleteGarden}>
                         Delete {garden.name}
                     </Button>
                 {/* </Link>} */}
