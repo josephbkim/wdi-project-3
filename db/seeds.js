@@ -98,7 +98,34 @@ Garden.remove({}).then(() => {
         quantity: 6
     })
     patty.plants.push(hydrangea, daisy, sunflower)
-    lostCorner.users.push(lindsay, suzeanne, patty)
+    const john = new User({
+        firstName: 'John',
+        lastName: 'Smith',
+        email: 'john@gmail.com',
+        share: true
+    })
+    const orange = new Plant({
+        name: 'Orange',
+        sunlightNeeded:'A lot',
+        quantity: 2
+    })
+    const lemon = new Plant({
+        name: 'Lemon',
+        sunlightNeeded:'A lot',
+        quantity: 4
+    })
+    const lime = new Plant({
+        name: 'Lime',
+        sunlightNeeded:'A lot',
+        quantity: 5
+    })
+    const rose = new Plant({
+        name: 'Rose',
+        sunlightNeeded: 'A lot',
+        quantity: 6
+    })
+    john.plants.push(orange, lemon, lime, rose)
+    lostCorner.users.push(lindsay, suzeanne, patty, john)
     return lostCorner.save()
 }).then(() => {
     const grantParkGarden = new Garden({
@@ -188,6 +215,7 @@ Garden.remove({}).then(() => {
         address: '123 Canton St',
         city: 'Roswell',
         state: 'GA',
+        totalNumberOfPlots: 4,
         description: 'A non-profit group created in conjunction with\
         the City of Roswell to help turn this beautiful 15 acre preserve\
         into a usable recreation area for residents to enjoy.'

@@ -3,6 +3,7 @@ import '../App.css'
 import styled from 'styled-components'
 
 const GardenDetail = (props) => {
+    console.log(props.garden.totalNumberOfPlots)
 
     return (
         <GardenDiv>
@@ -12,7 +13,9 @@ const GardenDetail = (props) => {
             <div>{props.garden.address}</div>
             <div>{props.garden.city}, {props.garden.state}</div>
             <div>Number of Gardeners: {props.userCount}</div>
-            <div>Number of Available: {props.totalPlots - props.userCount}</div>
+            <div>Number of Available Plots:
+                {Number(props.garden.totalNumberOfPlots) - Number(props.userCount)}
+            </div>
             <div>Cost of Plot: </div>
         </GardenDiv>
     );

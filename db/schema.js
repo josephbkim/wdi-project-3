@@ -35,6 +35,10 @@ const GardenSchema = new Schema(
         city: String,
         state: String,
         spaceAvailable: Boolean,
+        totalNumberOfPlots: {
+            type: Number,
+            default: 5,
+        },
         users: [UserSchema]
     },
     {
