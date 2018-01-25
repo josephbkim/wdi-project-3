@@ -74,14 +74,7 @@ class GardensPage extends Component {
         this.setState({ garden: blankForm })
     }
 
-    updateGarden = async (garden) => {
-        try {
-            await axios.patch(`/api/gardens/${garden._id}`, garden)
-        } catch (err) {
 
-            console.log(err)
-        }
-    }
 
 
     render() {
@@ -89,12 +82,10 @@ class GardensPage extends Component {
         const gardensList = this.state.gardens.map((garden, index) => {
             return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link>
                 <button onClick={() => this.deleteGarden(garden)}>Delete</button>
+        
             </div>)
         })
         
-        
-
-
         const GardenForm = styled.form`
         width: 50%;
         `
@@ -105,8 +96,6 @@ class GardensPage extends Component {
                 <div>
                     {gardensList}
                 </div>
-
-                {/* <FormDiv> */}
                 <form onSubmit={this.createGarden}>
                     <div>
                         <label htmlFor="name">Garden Name</label>
@@ -129,7 +118,6 @@ class GardensPage extends Component {
                     </div>
 
                 </form>
-                {/* </FormDiv> */}
 
 
             </div>

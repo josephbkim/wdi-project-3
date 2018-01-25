@@ -7,7 +7,7 @@ class GardenEdit extends Component {
         return (
             <div>
                 <h3>Gardens</h3>
-                <form onSubmit={this.props.updateGarden}>
+                <form onSubmit={() => this.props.updateGarden(this.props.garden)}>
                     <div>
                         <label htmlFor="name">Garden Name</label>
                         <input onChange={this.props.handleChange} name="name" type="text" value={this.props.garden.name} />

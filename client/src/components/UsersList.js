@@ -104,7 +104,7 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}/> 
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
                 </div>
                 
             </div >
