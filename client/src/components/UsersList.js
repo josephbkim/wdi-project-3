@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import GardenDetail from './GardenDetail'
+import GardenEdit from './GardenEdit'
 
 class UsersList extends Component {
     state = {
@@ -34,9 +35,18 @@ class UsersList extends Component {
     //     // const gardenIndexToDelete = this.state.garden
     // }
 
+    updateGarden = async (garden) => {
+        try {
+            await axios.patch(`/api/gardens/${garden._id}`, garden)
+        } catch (err) {
 
+            console.log(err)
+        }
+    }
 
     render() {
+
+
         const garden = this.state.garden
         const userCount = this.state.garden.users.length
 
@@ -90,11 +100,13 @@ class UsersList extends Component {
                 }
 
 
-                {/* {<Link to={`/api/gardens/${garden._id}`}> */}
                 <Button onClick={this.deleteGarden}>
                     Delete {garden.name}
                 </Button>
-                {/* </Link>} */}
+                <div>
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}/> 
+                </div>
+                
             </div >
         )
     }

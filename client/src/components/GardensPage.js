@@ -27,7 +27,7 @@ class GardensPage extends Component {
             const gardens = response.data
             this.setState({ gardens: response.data })
         }
-        
+
         catch (err) {
             console.log(err)
         }
@@ -74,6 +74,16 @@ class GardensPage extends Component {
         this.setState({ garden: blankForm })
     }
 
+    updateGarden = async (garden) => {
+        try {
+            await axios.patch(`/api/gardens/${garden._id}`, garden)
+        } catch (err) {
+
+            console.log(err)
+        }
+    }
+
+
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
@@ -81,7 +91,8 @@ class GardensPage extends Component {
                 <button onClick={() => this.deleteGarden(garden)}>Delete</button>
             </div>)
         })
-
+        
+        
 
 
         const GardenForm = styled.form`
