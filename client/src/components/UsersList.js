@@ -30,6 +30,8 @@ class UsersList extends Component {
     }
 
     handleChange = (event) => {
+        console.log('test')
+        event.preventDefault()
         const garden = { ...this.state.garden }
         garden[event.target.name] = event.target.value
         this.setState({ garden })

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../App.css'
 import styled from 'styled-components'
 
 const GardenDetail = (props) => {
-    console.log(props.garden.totalNumberOfPlots)
-
+    // console.log(props.garden.totalNumberOfPlots)
+    console.log('garden detail component')
     return (
         <GardenDiv>
             <div>{props.garden.name}</div>

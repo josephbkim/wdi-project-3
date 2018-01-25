@@ -4,7 +4,6 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Button } from 'react-materialize'
 import SubmitButton from './SubmitButton'
-import UsersList from './UsersList'
 
 class GardensPage extends Component {
     state = {
@@ -25,7 +24,7 @@ class GardensPage extends Component {
         try {
             const response = await axios.get('/api/gardens')
             const gardens = response.data
-            this.setState({ gardens: response.data })
+            this.setState({ gardens: gardens })
         }
 
         catch (err) {
@@ -86,9 +85,6 @@ class GardensPage extends Component {
             </div>)
         })
         
-        const GardenForm = styled.form`
-        width: 50%;
-        `
 
         return (
             <div>

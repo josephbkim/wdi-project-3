@@ -12,10 +12,10 @@ router.get('/', (request, response) => {
 })
 
 router.post('/', (request, response) => {
-    const newGardenInfo = req.body
+    const newGardenInfo = request.body
     newGarden = Garden.create(newGardenInfo)
         .then(() => {
-            res.json(newGarden)
+            response.json(newGarden)
         })
         .catch((err) => {
             console.log(err)
@@ -35,7 +35,7 @@ router.delete('/:gardenId', async (request, response) => {
 router.patch('/:gardenId', async (request, response) => {
     try {
         const updatedGardenInfo = await Garden.findByIdAndUpdate(request.params.gardenId, request.body, {new: true})
-        garden.name = request.body
+        garden.name = request.body.name
         response.json(garden)
     }
     catch (err) {
