@@ -7,12 +7,12 @@ const GardenDetail = (props) => {
     return (
         <GardenDiv>
             <div>{props.garden.name}</div>
-            <div>{props.garden.description}</div>
+            <div>Description: {props.garden.description}</div>
             <div>Address:</div>
             <div>{props.garden.address}</div>
             <div>{props.garden.city}, {props.garden.state}</div>
             <div>Number of Gardeners: {props.userCount}</div>
-            <div>Number of Available: {10 - props.userCount}</div>
+            <div>Number of Available: {props.totalPlots - props.userCount}</div>
             <div>Cost of Plot: </div>
         </GardenDiv>
     );

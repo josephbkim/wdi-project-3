@@ -22,8 +22,7 @@ Garden.remove({}).then(() => {
         address: '7300 Brandon Mill Road',
         city: 'Atlanta',
         state: 'GA',
-        description: 'A non-profit group created in conjunction with\
-        the City of Sandy Springs to help turn this beautiful 24 acre preserve\
+        description: 'A non-profit group created in conjunction with the City of Sandy Springs to help turn this beautiful 24 acre preserve\
         into a usable recreation area for residents to enjoy.'
     })
     // seed User
@@ -107,9 +106,7 @@ Garden.remove({}).then(() => {
         address: '970 Grant St',
         city: 'Atlanta',
         state: 'GA',
-        description: 'A non-profit group created in conjunction with\
-        the City of Atlanta to help turn this beautiful 15 acre preserve\
-        into a usable recreation area for residents to enjoy.'
+        description: 'A non-profit group created in conjunction with the City of Atlanta to help turn this beautiful 15 acre preserve into a usable recreation area for residents to enjoy.'
     })
     const lindsay = new User({
         firstName: 'Lindsay' ,
@@ -185,6 +182,90 @@ Garden.remove({}).then(() => {
     patty.plants.push(hydrangea, daisy, sunflower)
     grantParkGarden.users.push(lindsay, suzeanne, patty)
     return grantParkGarden.save()
+}).then(() => {
+    const cantonStGardens = new Garden({
+        name: 'Canton St Gardens',
+        address: '123 Canton St',
+        city: 'Roswell',
+        state: 'GA',
+        description: 'A non-profit group created in conjunction with\
+        the City of Roswell to help turn this beautiful 15 acre preserve\
+        into a usable recreation area for residents to enjoy.'
+    })
+    const lindsay = new User({
+        firstName: 'Lindsay' ,
+        lastName: 'Lohan',
+        email: 'lulu@gmail.com',
+        share: true
+    })
+    // seed Plants
+    const kale = new Plant({
+        name: 'Kale',
+        sunlightNeeded: 'Average',
+        quantity: 3
+    })
+    const squash = new Plant({
+        name: 'Squash',
+        sunlightNeeded:'Average',
+        quantity: 5
+    })
+    const pepper = new Plant({
+        name: 'Pepper',
+        sunlightNeeded:'Average',
+        quantity: 2
+    })
+    const greenBean = new Plant({
+        name: 'Green Bean',
+        sunlightNeeded:'Average',
+        quantity: 5
+    })
+    lindsay.plants.push(kale, squash, pepper, greenBean)
+    const suzeanne = new User({
+        firstName: 'Suzanne' ,
+        lastName: 'Sommers',
+        email: 'suzanne@gmail.com',
+        share: true
+    })
+    const tomato = new Plant({
+        name: 'Tomato',
+        sunlightNeeded:'Average',
+        quantity: 6
+    })
+    const zucchini = new Plant({
+        name: 'Zucchini',
+        sunlightNeeded:'Average',
+        quantity: 7
+    })
+    suzeanne.plants.push(tomato, zucchini)
+    const patty = new User({
+        firstName: 'Patty',
+        lastName: 'Arquette',
+        email: 'patty@gmail.com',
+        share: true
+    })
+    const hydrangea = new Plant({
+        name: 'Hydrangea',
+        sunlightNeeded:'Average',
+        quantity: 2
+    })
+    const daisy = new Plant({
+        name: 'Daisy',
+        sunlightNeeded:'Average',
+        quantity: 4
+    })
+    const sunflower = new Plant({
+        name: 'Sunflower',
+        sunlightNeeded:'Average',
+        quantity: 5
+    })
+    const tulip = new Plant({
+        name: 'Tulip',
+        sunlightNeeded:'Some',
+        quantity: 6
+    })
+    patty.plants.push(hydrangea, daisy, sunflower)
+    cantonStGardens.users.push(lindsay, suzeanne, patty)
+    return cantonStGardens.save()
 }).catch((err) => {
     console.log(`*** ERROR SEEDING DATA ${err}`)
 }).then(() => {
