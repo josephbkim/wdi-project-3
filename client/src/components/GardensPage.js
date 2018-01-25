@@ -84,7 +84,7 @@ class GardensPage extends Component {
         
 
         
-        const FormDiv = styled.div`
+        const GardenForm = styled.form`
         width: 50%;
         `
 
@@ -95,8 +95,8 @@ class GardensPage extends Component {
                     {gardensList}
                 </div>
 
-                {/* <FormDiv> */}
-                    <form onSubmit={this.createGarden}>
+                
+                    <GardenForm onSubmit={this.createGarden}>
                         <div>
                             <label htmlFor="name">Garden Name</label>
                             <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
@@ -117,8 +117,8 @@ class GardensPage extends Component {
                             <SubmitButton />
                         </div>
 
-                    </form>
-                {/* </FormDiv> */}
+                    </GardenForm>
+
 
 
             </div>
