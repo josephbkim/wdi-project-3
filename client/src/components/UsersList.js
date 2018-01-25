@@ -38,14 +38,6 @@ class UsersList extends Component {
 
     render() {
         const garden = this.state.garden
-        // const userList = garden.users.map((user, index) => {
-        //     return (<div className='userContainer' key={index}>
-        //         <div>
-        //             <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
-        //         </div>
-        //         <div>{user.email}</div>
-        //     </div>)
-        // })
         const userCount = this.state.garden.users.length
 
         // ======== STYLED COMPONENTS ==========
@@ -69,6 +61,12 @@ class UsersList extends Component {
         border-radius: 5px;
         `
 
+        const UserContainer = styled.div`
+        border: 3px green solid;
+        
+
+        `
+
         return (
             <div>
                 <GardenDetail
@@ -80,9 +78,9 @@ class UsersList extends Component {
                     {
                         garden.users.map((user, index) => {
                             return (<div className='userContainer' key={index}>
-                                <div>
+                                <UserContainer>
                                     <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
-                                </div>
+                                </UserContainer>
                                 <div>{user.email}</div>
                             </div>)
                         })
