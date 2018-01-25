@@ -38,14 +38,14 @@ class UsersList extends Component {
 
     render() {
         const garden = this.state.garden
-        const userList = garden.users.map((user, index) => {
-            return (<div key={index}>
-                <div>
-                    <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
-                </div>
-                <div>{user.email}</div>
-            </div>)
-        })
+        // const userList = garden.users.map((user, index) => {
+        //     return (<div className='userContainer' key={index}>
+        //         <div>
+        //             <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
+        //         </div>
+        //         <div>{user.email}</div>
+        //     </div>)
+        // })
         const userCount = this.state.garden.users.length
 
         // ======== STYLED COMPONENTS ==========
@@ -56,7 +56,7 @@ class UsersList extends Component {
         padding: 20px;
         
         `
-        const UserList = styled.div`
+        const UserListContainer = styled.div`
         border: 5px solid brown;
         border-radius: 5px;
         margin: 20px;
@@ -74,22 +74,35 @@ class UsersList extends Component {
                 <GardenDetail
                     garden={this.state.garden}
                     userCount={userCount}
-                    />
+                />
 
-                <UserList>
-                    {userList}
-                </UserList>
-                {<Link to={`/gardens`}>
-                    <Button>
-                        Back to Gardens
+                <UserListContainer>
+                    {
+                        garden.users.map((user, index) => {
+                            return (<div className='userContainer' key={index}>
+                                <div>
+                                    <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
+                                </div>
+                                <div>{user.email}</div>
+                            </div>)
+                        })
+                    }
+                </UserListContainer>
+
+
+                {
+                    <Link to={`/gardens`}>
+                        <Button>
+                            Back to Gardens
                     </Button>
-                </Link>}
+                    </Link>
+                }
 
 
                 {/* {<Link to={`/api/gardens/${garden._id}`}> */}
-                    <Button onClick={this.deleteGarden}>
-                        Delete {garden.name}
-                    </Button>
+                <Button onClick={this.deleteGarden}>
+                    Delete {garden.name}
+                </Button>
                 {/* </Link>} */}
             </div >
         )
