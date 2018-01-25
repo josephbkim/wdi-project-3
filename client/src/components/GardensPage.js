@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import {Button} from 'react-materialize'
 import SubmitButton from './SubmitButton'
 import UsersList from './UsersList'
+// import GardenDetail from './GardenDetail'
 
 class GardensPage extends Component {
     state = {
@@ -94,6 +95,7 @@ class GardensPage extends Component {
                 <div>
                     {gardensList}
                 </div>
+                    
 
                 
                     <GardenForm onSubmit={this.createGarden}>

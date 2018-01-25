@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import GardenDetail from './GardenDetail'
 
 class UsersList extends Component {
     state = {
@@ -27,26 +28,26 @@ class UsersList extends Component {
         }
     }
 
-    deleteGarden = async (garden) => {
-        console.log("Deleting!")
-        await axios.delete(`/api/gardens/${garden._id}`)
-        // const gardenIndexToDelete = this.state.garden
-    }
+    // deleteGarden = async (garden) => {
+    //     console.log("Deleting!")
+    //     await axios.delete(`/api/gardens/${garden._id}`)
+    //     // const gardenIndexToDelete = this.state.garden
+    // }
 
 
 
     render() {
-        console.log(`DELETE GARDEN----- ${this.deleteGarden}`)
         const garden = this.state.garden
         const userList = garden.users.map((user, index) => {
             return (<div key={index}>
                 <div>
-                    <Link to={`/gardens/${garden._id}/users/${user._id}`}>{user.firstName}</Link>
+                    <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
                 </div>
                 <div>{user.email}</div>
             </div>)
         })
         const userCount = this.state.garden.users.length
+
         // ======== STYLED COMPONENTS ==========
         const GardenDiv = styled.div`
         border: 5px solid black;
@@ -70,15 +71,11 @@ class UsersList extends Component {
 
         return (
             <div>
-                <GardenDiv className='garden-detail'>
-                    <div>{this.state.garden.name}</div>
-                    <div>Address:</div>
-                    <div>{this.state.garden.address}</div>
-                    <div>{this.state.garden.city}, {this.state.garden.state}</div>
-                    <div>Number of Gardeners: {userCount}</div>
-                    <div>Number of Available: {10 - userCount}</div>
-                    <div>Cost of Plot: </div>
-                </GardenDiv>
+                <GardenDetail
+                    garden={this.state.garden}
+                    userCount={userCount}
+                    />
+
                 <UserList>
                     {userList}
                 </UserList>
@@ -94,8 +91,6 @@ class UsersList extends Component {
                         Delete {garden.name}
                     </Button>
                 {/* </Link>} */}
-
-
             </div >
         )
     }
