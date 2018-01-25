@@ -29,6 +29,13 @@ class UsersList extends Component {
         }
     }
 
+    handleChange = (event) => {
+        // event.preventDefault()
+        const garden = { ...this.state.garden }
+        garden[event.target.name] = event.target.value
+        this.setState({ garden })
+    }
+
     // deleteGarden = async (garden) => {
     //     console.log("Deleting!")
     //     await axios.delete(`/api/gardens/${garden._id}`)
