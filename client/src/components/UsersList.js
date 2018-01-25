@@ -80,6 +80,7 @@ class UsersList extends Component {
                             return (<div className='userContainer' key={index}>
                                 <UserContainer>
                                     <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
+                                    <div>Different Types of Plants: {user.plants.length}</div>
                                 </UserContainer>
                                 <div>{user.email}</div>
                             </div>)

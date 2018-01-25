@@ -27,7 +27,6 @@ class App extends Component {
         </Header>
 
         <Router>
-
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/gardens' component={GardensPage} />

@@ -97,7 +97,7 @@ class GardensPage extends Component {
                     
 
                 
-                    <GardenForm onSubmit={this.createGarden}>
+                    <div onSubmit={this.createGarden}>
                         <div>
                             <label htmlFor="name">Garden Name</label>
                             <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
@@ -118,7 +118,7 @@ class GardensPage extends Component {
                             <SubmitButton />
                         </div>
 
-                    </GardenForm>
+                    </div>
 
 
 
