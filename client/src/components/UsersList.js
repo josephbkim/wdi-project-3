@@ -10,7 +10,8 @@ class UsersList extends Component {
         garden: {
             users: []
         },
-        user: ''
+        user: '',
+        redirect: false
     }
 
     componentWillMount = () => {
@@ -62,21 +63,30 @@ class UsersList extends Component {
 
         // ======== STYLED COMPONENTS ==========
         const UserListContainer = styled.div`
-        border: 5px solid brown;
+        border: 5px solid green;
+        background-color: #BEEE62;
         border-radius: 5px;
         margin: 20px;
         padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
         `
         const Button = styled.button`
         border: 5px solid red;
         border-radius: 5px;
         color: white:
-        border-radius: 5px;
+        border-radius: 50%;
         `
 
         const UserContainer = styled.div`
-        border: 3px green solid;     
-
+        border: 3px brown solid; 
+        backround-color: #BEAD85;
+        color: white;
+        width: 150px; 
+        height: 150px;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 4px;
         `
 
         return (
@@ -94,7 +104,6 @@ class UsersList extends Component {
                                     <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
                                     <div>Different Types of Plants: {user.plants.length}</div>
                                 </UserContainer>
-                                <div>{user.email}</div>
                             </div>)
                         })
                     }
