@@ -8,6 +8,10 @@ class PlantsList extends Component {
         plants: []
     }
 
+    // getAllPlants = () => {
+    //     axios.get('api/')
+    // }
+
     render() {
 
         
