@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+// import PlantsList from './PlantsList'
 
 class PlantsPage extends Component {
     state = {
@@ -27,13 +28,18 @@ class PlantsPage extends Component {
 
 
     render() {
-
+        // const plantsList = this.state.user.plants.map((plant, index) => {
+        //     return <div>{plants.name}</div>
+        const plantsList = ['test', 'test2'].map((user, index) => {
+            return <div>{user}</div>
+        })
 
 
         return (
             <div>
 
                 <div>Hello from Plants Page</div>
+                <div>{plantsList}</div>
 
             </div>
 
