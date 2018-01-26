@@ -30,9 +30,11 @@ class UsersList extends Component {
     }
 
     handleChange = (event) => {
+        console.log("Handle Change Method")
         event.preventDefault()
         const garden = { ...this.state.garden }
         garden[event.target.name] = event.target.value
+        console.log("Updated Garden:", garden)
         this.setState({ garden })
     }
 
@@ -43,10 +45,11 @@ class UsersList extends Component {
     // }
 
     updateGarden = async (garden) => {
+        console.log("Updating Garden in DB")
         try {
             await axios.patch(`/api/gardens/${garden._id}`, garden)
+            console.log("Garden Updated")
         } catch (err) {
-
             console.log(err)
         }
     }
@@ -111,7 +114,7 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
+                    <GardenEdit updateGarden={() => this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
                 </div>
                 
             </div >
