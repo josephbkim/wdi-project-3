@@ -14,4 +14,20 @@ router.get('/', (request, response) => {
         })
 })
 
+
+router.delete('/:userId', async (request, response) => {
+    console.log("Deleting user:", request.params.userId)
+    try {
+        const garden = await Garden.findById(request.params.gardenId)
+        console.log("Got garden:", garden)
+        const user = garden.users.id(request.params.userId).remove()
+        await garden.save()
+        console.log("Saved garden after removing user")
+        // response.redirect(`/garden/${gardenId}/users`)
+        response.json(user)
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 module.exports = router
