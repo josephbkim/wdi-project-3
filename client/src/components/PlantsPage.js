@@ -25,28 +25,36 @@ class PlantsPage extends Component {
         }
     }
 
-
-
     render() {
-        console.log(this.state)
-        if(this.state.user.plants) {
-            const plantsList = this.state.user.plants.map((plant, index) => {
-                return <div>{plant.name}</div>
+        
+        const PlantList = styled.div`
+        border: 5px solid brown;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 20px;
+        `
+        
+        let plantsList = []
+        if(this.state.user && this.state.user.plants) {
+            plantsList = this.state.user.plants.map((plant, index) => {
+                return <div key={index}>
+                            <div>{plant.name}</div>
+                            <div>Number of Plants: {plant.quantity}</div>
+                            <div>{plant.sunlightNeeded}</div>
+                            {/* <div>{}</div>
+                            <div>{}</div> */}
+                        </div>
             })
-        } else {
-            const plantsList = []
-            return plantsList
         }
-
 
         return (
             <div>
 
                 <div>Hello from Plants Page</div>
-                <div>
+                <PlantList>
                     {plantsList}
 
-                </div>
+                </PlantList>
 
             </div>
 
