@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import HomePage from './components/HomePage'
 import GardensPage from './components/GardensPage'
 import UsersList from './components/UsersList'
-import PlantsList from './components/PlantsList'
+import PlantsPage from './components/PlantsPage'
 
 class App extends Component {
 
@@ -28,7 +28,7 @@ class App extends Component {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/gardens' component={GardensPage} />
             <Route exact path='/gardens/:gardenId/users' component={UsersList} />
-            <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsList} />
+            <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
 
           </Switch>
         </Router>
