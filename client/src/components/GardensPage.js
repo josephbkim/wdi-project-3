@@ -57,7 +57,7 @@ class GardensPage extends Component {
         const payload = {
             name: this.state.garden.name,
             address: this.state.garden.address,
-            city: this.state.garden.address,
+            city: this.state.garden.city,
             state: this.state.garden.state
         }
         const blankForm = {
@@ -82,7 +82,12 @@ class GardensPage extends Component {
                 <span type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </span>
             </div>)
         })
-        
+
+        const NewFormDiv = styled.div`
+        border: 5px solid green;
+        background-color: #BEEE62;
+        `
+
 
         return (
             <div>
@@ -90,28 +95,30 @@ class GardensPage extends Component {
                 <div>
                     {gardensList}
                 </div>
-                <form onSubmit={this.createGarden}>
-                    <div>
-                        <label htmlFor="name">Garden Name</label>
-                        <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
-                    </div>
-                    <div>
-                        <label htmlFor="address">Address</label>
-                        <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
-                    </div>
-                    <div>
-                        <label htmlFor="city">City</label>
-                        <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
-                    </div>
-                    <div>
-                        <label htmlFor="state">State</label>
-                        <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
-                    </div>
-                    <div>
-                        <SubmitButton />
-                    </div>
+                {/* <NewFormDiv> */}
+                    <form onSubmit={this.createGarden}>
+                        <div>
+                            <label htmlFor="name">Garden Name</label>
+                            <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
+                        </div>
+                        <div>
+                            <label htmlFor="address">Address</label>
+                            <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
+                        </div>
+                        <div>
+                            <label htmlFor="city">City</label>
+                            <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
+                        </div>
+                        <div>
+                            <label htmlFor="state">State</label>
+                            <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
+                        </div>
+                        <div>
+                            <SubmitButton />
+                        </div>
 
-                </form>
+                    </form>
+                {/* </NewFormDiv> */}
 
 
             </div>

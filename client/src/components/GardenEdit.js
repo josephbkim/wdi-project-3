@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import SubmitButton from './SubmitButton'
 
-function GardenEdit(props) {
 
+function GardenEdit(props) {
+    
     return (
         <div>
             <h3>Gardens</h3>
-            <form onSubmit={props.updateGarden(props.garden)}>
+            <form onSubmit={props.updateGarden}>
                 <div>
                     <label htmlFor="name">Garden Name</label>
                     <input onChange={props.handleChange} name="name" type="text" value={props.garden.name} />

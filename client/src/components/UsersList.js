@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import GardenDetail from './GardenDetail'
@@ -45,11 +45,17 @@ class UsersList extends Component {
     //     // const gardenIndexToDelete = this.state.garden
     // }
 
-    updateGarden = async (garden) => {
+    updateGarden = async (event) => {
+        event.preventDefault()
         console.log("Updating Garden in DB")
         try {
-            await axios.patch(`/api/gardens/${garden._id}`, garden)
-            console.log("Garden Updated")
+            event.preventDefault()
+            console.log("this is updating to this garden:", this.state.garden.name)
+            const response = await axios.patch(`/api/gardens/${this.state.garden._id}`, this.state.garden)
+            this.setState({
+                garden: response.data,
+                redirect: true
+            })
         } catch (err) {
             console.log(err)
         }
@@ -57,40 +63,17 @@ class UsersList extends Component {
 
     render() {
 
+        if (this.state.redirect) {
+            <Redirect to={`/gardens`} />
+        }
 
         const garden = this.state.garden
         const userCount = this.state.garden.users.length
 
-        // ======== STYLED COMPONENTS ==========
-        const UserListContainer = styled.div`
-        border: 5px solid green;
-        background-color: #BEEE62;
-        border-radius: 5px;
-        margin: 20px;
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        `
-        const Button = styled.button`
-        border: 5px solid red;
-        border-radius: 5px;
-        color: white:
-        border-radius: 50%;
-        `
-
-        const UserContainer = styled.div`
-        border: 3px brown solid; 
-        backround-color: #BEAD85;
-        color: white;
-        width: 150px; 
-        height: 150px;
-        margin: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        `
-
         return (
             <div>
+
+
                 <GardenDetail
                     garden={this.state.garden}
                     userCount={userCount}
@@ -123,12 +106,40 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={() => this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
                 </div>
                 
-            </div >
+            </div>
         )
     }
 }
 
 export default UsersList
+
+        // ======== STYLED COMPONENTS ==========
+        const UserListContainer = styled.div`
+        border: 5px solid green;
+        background-color: #BEEE62;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        `
+        const Button = styled.button`
+        border: 5px solid red;
+        border-radius: 5px;
+        color: white:
+        border-radius: 50%;
+        `
+
+        const UserContainer = styled.div`
+        border: 3px brown solid; 
+        backround-color: #BEAD85;
+        color: white;
+        width: 150px; 
+        height: 150px;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 4px;
+        `
