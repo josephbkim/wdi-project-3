@@ -28,22 +28,27 @@ class PlantsPage extends Component {
 
 
     render() {
-        // const plantsList = this.state.user.plants.map((plant, index) => {
-        //     return <div>{plants.name}</div>
-        const plantsList = ['test', 'test2'].map((user, index) => {
-            return <div>{user}</div>
-        })
+        console.log(this.state)
+        if(this.state.user.plants) {
+            const plantsList = this.state.user.plants.map((plant, index) => {
+                return <div>{plant.name}</div>
+            })
+        } else {
+            const plantsList = []
+            return plantsList
+        }
 
 
         return (
             <div>
 
                 <div>Hello from Plants Page</div>
-                <div>{plantsList}</div>
+                <div>
+                    {plantsList}
+
+                </div>
 
             </div>
-
-
 
         )
     }
