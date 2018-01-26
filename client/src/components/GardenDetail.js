@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css'
 import styled from 'styled-components'
+// import GoTrashcan from react-icons/lib/go/trashcan
 
 const GardenDetail = (props) => {
     // console.log(props.garden.totalNumberOfPlots)
