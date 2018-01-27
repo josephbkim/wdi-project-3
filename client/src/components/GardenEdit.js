@@ -8,7 +8,7 @@ function GardenEdit(props) {
     return (
         <div>
             <h3>Gardens</h3>
-            <form onSubmit={props.updateGarden}>
+            <form style={newFormStyle} onSubmit={props.updateGarden}>
                 <div>
                     <label htmlFor="name">Garden Name</label>
                     <input onChange={props.handleChange} name="name" type="text" value={props.garden.name} />
@@ -28,7 +28,6 @@ function GardenEdit(props) {
                 <div>
                     <SubmitButton />
                 </div>
-
             </form>
         </div>
     )
@@ -36,3 +35,11 @@ function GardenEdit(props) {
 }
 
 export default GardenEdit
+
+const newFormStyle = {
+    border: '5px solid green',
+    backgroundColor: '#BEEE62',
+    width: 300,
+    fontSize: 14,
+    padding: 20
+}

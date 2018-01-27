@@ -83,10 +83,24 @@ class GardensPage extends Component {
             </div>)
         })
 
-        const NewFormDiv = styled.div`
-        border: 5px solid green;
-        background-color: #BEEE62;
-        `
+        const newFormStyle = {
+            border: '5px solid green',
+            backgroundColor: '#BEEE62',
+            width: 300,
+            fontSize: 14,
+            padding: 20
+        }
+
+        // const Input = styled.input`
+        // border: 2px solid red;
+        // border-radius: 5px;
+        // color: red;
+        // border-radius: 3px;
+        // font-size: 14px;
+        // `
+
+
+
 
 
         return (
@@ -95,22 +109,30 @@ class GardensPage extends Component {
                 <div>
                     {gardensList}
                 </div>
-                {/* <NewFormDiv> */}
-                    <form onSubmit={this.createGarden}>
+                <div>
+                    <form style={newFormStyle} onSubmit={this.createGarden}>
                         <div>
                             <label htmlFor="name">Garden Name</label>
-                            <input onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
+                        </div>
+                        <div>
+                            <input className="form-input" onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
                         </div>
                         <div>
                             <label htmlFor="address">Address</label>
+                        </div>
+                        <div>
                             <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
                         </div>
                         <div>
                             <label htmlFor="city">City</label>
+                        </div>
+                        <div>
                             <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
                         </div>
                         <div>
                             <label htmlFor="state">State</label>
+                        </div>
+                        <div>
                             <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
                         </div>
                         <div>
@@ -118,7 +140,7 @@ class GardensPage extends Component {
                         </div>
 
                     </form>
-                {/* </NewFormDiv> */}
+                </div>
 
 
             </div>

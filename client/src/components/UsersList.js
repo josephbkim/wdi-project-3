@@ -106,9 +106,9 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange}/> 
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange} />
                 </div>
-                
+
             </div>
         )
     }
@@ -116,30 +116,38 @@ class UsersList extends Component {
 
 export default UsersList
 
-        // ======== STYLED COMPONENTS ==========
-        const UserListContainer = styled.div`
-        border: 5px solid green;
-        background-color: #BEEE62;
-        border-radius: 5px;
-        margin: 20px;
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        `
-        const Button = styled.button`
-        border: 5px solid red;
-        border-radius: 5px;
-        color: white:
-        border-radius: 50%;
-        `
+// ======== STYLED COMPONENTS ==========
+const UserListContainer = styled.div`
+    background-color: #BEEE62;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    `
+    
+const Button = styled.button`
+    border: 5px solid red;
+    border-radius: 5px;
+    color: black;
+    border-radius: 5px;
+    `
 
-        const UserContainer = styled.div`
-        border: 3px brown solid; 
-        backround-color: #BEAD85;
-        color: white;
-        width: 150px; 
-        height: 150px;
-        margin: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        `
+const UserContainer = styled.div`
+    border: 8px #966F33 solid; 
+    backround-color: #BEAD85;
+    color: white;
+    width: 150px; 
+    height: 150px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 2px;
+    `
+
+const newFormStyle = {
+    border: '5px solid green',
+    backgroundColor: '#BEEE62',
+    width: 300,
+    fontSize: 14,
+    padding: 20
+}
