@@ -85,11 +85,13 @@ class GardensPage extends Component {
         })
 
         const newFormStyle = {
-            border: '5px solid green',
-            backgroundColor: '#BEEE62',
+            // border: '5px solid green',
+            // backgroundColor: '#BEEE62',
             width: 300,
             fontSize: 14,
-            padding: 20
+            color: '#6b983f',
+            padding: '20px',
+            
         }
 
         return (

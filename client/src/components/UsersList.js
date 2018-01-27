@@ -11,7 +11,8 @@ class UsersList extends Component {
             users: []
         },
         user: '',
-        redirect: false
+        editFormShowing: false,
+        // redirect: false
     }
 
     componentWillMount = () => {
@@ -54,18 +55,29 @@ class UsersList extends Component {
             const response = await axios.patch(`/api/gardens/${this.state.garden._id}`, this.state.garden)
             this.setState({
                 garden: response.data,
-                redirect: true
+                redirect: true,
+                editFormShowing: false
             })
         } catch (err) {
             console.log(err)
         }
     }
 
-    render() {
+    toggleEditForm = () => {
+        this.setState({
+            editFormShowing: true
+        })
+    }
 
-        // if (this.state.redirect) {
-        //     <Redirect to={`/gardens`} />
-        // }
+    render() {
+        {
+            this.state.editFormShowing ?
+                <div>
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
+                        handleChange={this.handleChange} redirect={this.state.redirect} />
+                </div>
+                : null
+        }
 
         const garden = this.state.garden
         const userCount = this.state.garden.users.length
@@ -102,19 +114,29 @@ class UsersList extends Component {
                         <Button>
                             Back to Gardens
                         </Button>
-                    </Link>
+                    </Link >
                 }
 
 
                 <Button onClick={this.deleteGarden}>
                     Delete {garden.name}
                 </Button>
+                <Button onClick={this.toggleEditForm}>
+                    Edit {garden.name}
+                </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
-                        handleChange={this.handleChange} redirect={this.state.redirect} />
+                    {
+                        this.state.editFormShowing ?
+                            <div>
+                                <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
+                                    handleChange={this.handleChange} redirect={this.state.redirect} 
+                                    editFormShowing={this.editFormShowing} />
+                            </div>
+                            : null
+                    }
                 </div>
 
-            </div>
+            </div >
         )
     }
 }
@@ -150,11 +172,13 @@ const UserContainer = styled.div`
     `
 
 const newFormStyle = {
-    border: '5px solid green',
-    backgroundColor: '#BEEE62',
+    // border: '5px solid green',
+    // backgroundColor: '#BEEE62',
     width: 300,
     fontSize: 14,
-    padding: 20
+    color: '#6b983f',
+    padding: '20px',
+
 }
 
 const UserNameColor = styled.span`

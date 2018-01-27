@@ -34,7 +34,7 @@ function GardenEdit(props) {
                     <input onChange={props.handleChange} name="state" type="text" value={props.garden.state} />
                 </div>
                 <div>
-                    <Button> Submit</Button>
+                    <SubmitButton />
                 </div>
             </form>
         </div>

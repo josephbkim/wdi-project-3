@@ -6,16 +6,16 @@ import styled from 'styled-components'
 class SubmitButton extends Component {
 
     render() {
-        
+
         const Button = styled.button`
-        color: #66BB6A;;
-        font-size: 1em;
-        margin: 1em;
-        padding: 0.25em 1em;
-        border: 2px solid #66BB6A;;
-        border-radius: 3px;
+            border-radius: 5px;
+            background-color: #6B983F;
+            color: #bfd964;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 8px;
         `
-    
+
         return (
             <div>
                 <Button>Submit</Button>

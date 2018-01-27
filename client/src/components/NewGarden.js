@@ -6,6 +6,7 @@ function NewGarden(props) {
     return (
         <div>
             <h5>Have shared garden space to rent out?</h5>
+            <h6>Add your space below:</h6>
             <div>
                 <form style={newFormStyle} onSubmit={props.createGarden}>
                     <div>
@@ -33,7 +34,7 @@ function NewGarden(props) {
                         <input onChange={props.handleChange} name="state" type="text" value={props.garden.state} />
                     </div>
                     <div>
-                        <SubmitButton />
+                        <SubmitButton/>
                     </div>
 
                 </form>
@@ -46,9 +47,11 @@ export default NewGarden
 
 
 const newFormStyle = {
-    border: '5px solid green',
-    backgroundColor: '#BEEE62',
+    // border: '5px solid green',
+    // backgroundColor: '#BEEE62',
     width: 300,
     fontSize: 14,
-    padding: 20
+    color: '#6b983f',
+    padding: '20px',
+    
 }
