@@ -11,8 +11,7 @@ class App extends Component {
 
   render() {
     const Header = styled.header`
-    background-color: #66BB6A;
-    height: 50px;
+    background-color: #EAFFEB;
     text-align: center;
     vertical-align:center;
     `

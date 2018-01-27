@@ -71,7 +71,7 @@ class UsersList extends Component {
         const userCount = this.state.garden.users.length
 
         return (
-            <div>
+            <PageBackgroundColor>
 
 
                 <GardenDetail
@@ -83,10 +83,14 @@ class UsersList extends Component {
                     {
                         garden.users.map((user, index) => {
                             return (<div className='userContainer' key={index}>
-                                <UserContainer>
-                                    <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>{user.firstName}</Link>
-                                    <div>Different Types of Plants: {user.plants.length}</div>
-                                </UserContainer>
+
+                                <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>
+                                    <UserContainer>
+                                        <UserNameColor>{user.firstName}</UserNameColor>
+                                    </UserContainer>
+                                </Link>
+                                <div>Different Types of Plants: {user.plants.length}</div>
+
                             </div>)
                         })
                     }
@@ -106,11 +110,11 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} 
-                    handleChange={this.handleChange} redirect={this.state.redirect}/>
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
+                        handleChange={this.handleChange} redirect={this.state.redirect} />
                 </div>
 
-            </div>
+            </PageBackgroundColor>
         )
     }
 }
@@ -126,7 +130,7 @@ const UserListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     `
-    
+
 const Button = styled.button`
     border: 5px solid red;
     border-radius: 5px;
@@ -135,9 +139,8 @@ const Button = styled.button`
     `
 
 const UserContainer = styled.div`
-    border: 8px #966F33 solid; 
-    backround-color: #C8A165;
-    color: white;
+    border: 8px #2e0e02 solid; 
+    backround-color: #6C9712;
     width: 150px; 
     height: 150px;
     margin: 20px;
@@ -152,3 +155,10 @@ const newFormStyle = {
     fontSize: 14,
     padding: 20
 }
+
+const UserNameColor = styled.span`
+    color: white;
+`
+const PageBackgroundColor = styled.div`
+    background-color: #EAFFEB;
+`
