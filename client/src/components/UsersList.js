@@ -63,9 +63,9 @@ class UsersList extends Component {
 
     render() {
 
-        if (this.state.redirect) {
-            <Redirect to={`/gardens`} />
-        }
+        // if (this.state.redirect) {
+        //     <Redirect to={`/gardens`} />
+        // }
 
         const garden = this.state.garden
         const userCount = this.state.garden.users.length
@@ -106,7 +106,8 @@ class UsersList extends Component {
                     Delete {garden.name}
                 </Button>
                 <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} handleChange={this.handleChange} />
+                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden} 
+                    handleChange={this.handleChange} redirect={this.state.redirect}/>
                 </div>
 
             </div>

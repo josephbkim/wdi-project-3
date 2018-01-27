@@ -27,9 +27,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/gardens' component={GardensPage} />
+            {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
             <Route exact path='/gardens/:gardenId/users' component={UsersList} />
             <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
-
           </Switch>
         </Router>
       </div>

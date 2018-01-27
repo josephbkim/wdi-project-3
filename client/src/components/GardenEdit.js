@@ -1,9 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 import SubmitButton from './SubmitButton'
 
 
 function GardenEdit(props) {
+    // if (props.redirect) {
+    //     return (<Redirect to={`/users/${props.id}`} />)
+    // }
+    if (props.redirect) {
+        <Redirect to={`/gardens`} />
+    }
+
     
     return (
         <div>

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Button } from 'react-materialize'
 import SubmitButton from './SubmitButton'
 import GoTrashcan from 'react-icons/lib/go/trashcan'
+import NewGarden from './NewGarden';
 
 class GardensPage extends Component {
     state = {
@@ -98,6 +99,9 @@ class GardensPage extends Component {
                     {gardensList}
                 </div>
                 <div>
+                    <NewGarden gardensList={gardensList} createGarden={this.createGarden} 
+                    handleChange={this.handleChange} garden={this.state.garden} />
+{/* 
                     <form style={newFormStyle} onSubmit={this.createGarden}>
                         <div>
                             <label htmlFor="name">Garden Name</label>
@@ -127,7 +131,7 @@ class GardensPage extends Component {
                             <SubmitButton />
                         </div>
 
-                    </form>
+                    </form> */}
                 </div>
 
 
@@ -141,3 +145,4 @@ export default GardensPage
 const Span = styled.span`
     padding-left: 5px;
     `
+

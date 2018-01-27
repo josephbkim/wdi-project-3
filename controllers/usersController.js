@@ -1,19 +1,31 @@
 const express = require('express')
 const User = require('../db/models/User')
 const Garden = require('../db/models/Garden')
-const router = express.Router({ mergeParams: true }) 
+const router = express.Router({ mergeParams: true })
 
 router.get('/', (request, response) => {
-    const gardenId = request.params.gardenId 
+    const gardenId = request.params.gardenId
     Garden.findById(gardenId)
         .then((garden) => {
-            response.json(garden)            
+            response.json(garden)
         })
         .catch((err) => {
             console.log(err)
         })
 })
 
+router.post('/', async (request, response) => {
+    try {
+        const garden = await Garden.findById(request.params.gardenId)
+        const newUser = await User.create(request.body)
+        garden.users.push(newUser)
+        await garden.save()
+        response.json(garden)
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 
 router.delete('/:userId', async (request, response) => {
     console.log("Deleting user:", request.params.userId)
@@ -30,4 +42,5 @@ router.delete('/:userId', async (request, response) => {
         console.log(err)
     }
 })
+
 module.exports = router
