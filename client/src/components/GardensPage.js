@@ -79,8 +79,8 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link>
-                <Span type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </Span>
+            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}><GardenSpan>{garden.name}</GardenSpan></Link>
+                <TrashSpan type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </TrashSpan>
             </div>)
         })
 
@@ -111,7 +111,12 @@ class GardensPage extends Component {
 
 export default GardensPage
 
-const Span = styled.span`
+const TrashSpan = styled.span`
     padding-left: 5px;
+    font-size: 16px;
+    color: #6b983f;
+    `
+const GardenSpan = styled.span`
+    color: #6b983f;
     `
 
