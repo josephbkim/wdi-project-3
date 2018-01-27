@@ -99,42 +99,9 @@ class GardensPage extends Component {
                     {gardensList}
                 </div>
                 <div>
-                    <NewGarden gardensList={gardensList} createGarden={this.createGarden} 
-                    handleChange={this.handleChange} garden={this.state.garden} />
-{/* 
-                    <form style={newFormStyle} onSubmit={this.createGarden}>
-                        <div>
-                            <label htmlFor="name">Garden Name</label>
-                        </div>
-                        <div>
-                            <input className="form-input" onChange={this.handleChange} name="name" type="text" value={this.state.garden.name} />
-                        </div>
-                        <div>
-                            <label htmlFor="address">Address</label>
-                        </div>
-                        <div>
-                            <input onChange={this.handleChange} name="address" type="text" value={this.state.garden.address} />
-                        </div>
-                        <div>
-                            <label htmlFor="city">City</label>
-                        </div>
-                        <div>
-                            <input onChange={this.handleChange} name="city" type="text" value={this.state.garden.city} />
-                        </div>
-                        <div>
-                            <label htmlFor="state">State</label>
-                        </div>
-                        <div>
-                            <input onChange={this.handleChange} name="state" type="text" value={this.state.garden.state} />
-                        </div>
-                        <div>
-                            <SubmitButton />
-                        </div>
-
-                    </form> */}
+                    <NewGarden gardensList={gardensList} createGarden={this.createGarden}
+                        handleChange={this.handleChange} garden={this.state.garden} />
                 </div>
-
-
             </div>
         )
     }

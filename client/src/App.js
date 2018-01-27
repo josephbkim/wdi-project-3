@@ -11,13 +11,14 @@ class App extends Component {
 
   render() {
     const Header = styled.header`
-    background-color: #EAFFEB;
+    /* background-color: #EBF5E8; */
     text-align: center;
     vertical-align:center;
     `
 
     return (
       <div>
+        <SiteBackground>
         <Header>
           Garden Share
         </Header>
@@ -31,9 +32,15 @@ class App extends Component {
             <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
           </Switch>
         </Router>
+        </SiteBackground>
       </div>
     );
   }
 }
 
 export default App;
+
+const SiteBackground = styled.body`
+  background-color: #EBF5E8;
+`
+

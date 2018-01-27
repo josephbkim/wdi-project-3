@@ -71,7 +71,7 @@ class UsersList extends Component {
         const userCount = this.state.garden.users.length
 
         return (
-            <PageBackgroundColor>
+            <div>
 
 
                 <GardenDetail
@@ -89,7 +89,7 @@ class UsersList extends Component {
                                         <UserNameColor>{user.firstName}</UserNameColor>
                                     </UserContainer>
                                 </Link>
-                                <div>Different Types of Plants: {user.plants.length}</div>
+                                <PlantTypeCount>Types of Plants: {user.plants.length}</PlantTypeCount>
 
                             </div>)
                         })
@@ -101,7 +101,7 @@ class UsersList extends Component {
                     <Link to={`/gardens`}>
                         <Button>
                             Back to Gardens
-                    </Button>
+                        </Button>
                     </Link>
                 }
 
@@ -114,7 +114,7 @@ class UsersList extends Component {
                         handleChange={this.handleChange} redirect={this.state.redirect} />
                 </div>
 
-            </PageBackgroundColor>
+            </div>
         )
     }
 }
@@ -123,7 +123,7 @@ export default UsersList
 
 // ======== STYLED COMPONENTS ==========
 const UserListContainer = styled.div`
-    background-color: #BEEE62;
+    background-color: #bfd964;
     border-radius: 5px;
     margin: 20px;
     padding: 20px;
@@ -132,15 +132,16 @@ const UserListContainer = styled.div`
     `
 
 const Button = styled.button`
-    border: 5px solid red;
     border-radius: 5px;
-    color: black;
+    background-color: #6B983F;
+    color: #bfd964;
     border-radius: 5px;
+    padding: 5px;
+    margin: 8px;
     `
 
 const UserContainer = styled.div`
-    border: 8px #2e0e02 solid; 
-    backround-color: #6C9712;
+    border: 8px #571B0D solid; 
     width: 150px; 
     height: 150px;
     margin: 20px;
@@ -157,8 +158,10 @@ const newFormStyle = {
 }
 
 const UserNameColor = styled.span`
-    color: white;
+    color: #6B983F;
+    text-transform: uppercase;
 `
-const PageBackgroundColor = styled.div`
-    background-color: #EAFFEB;
+const PlantTypeCount = styled.div`
+    color: #571B0D;
+    text-align: center;
 `
