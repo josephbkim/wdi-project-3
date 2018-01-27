@@ -135,7 +135,7 @@ const Button = styled.button`
 
 const UserContainer = styled.div`
     border: 8px #966F33 solid; 
-    backround-color: #BEAD85;
+    backround-color: #C8A165;
     color: white;
     width: 150px; 
     height: 150px;

@@ -79,7 +79,7 @@ class GardensPage extends Component {
 
         const gardensList = this.state.gardens.map((garden, index) => {
             return (<div key={index}><Link to={`/gardens/${garden._id}/users`}>{garden.name}</Link>
-                <span type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </span>
+                <Span type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </Span>
             </div>)
         })
 
@@ -90,18 +90,6 @@ class GardensPage extends Component {
             fontSize: 14,
             padding: 20
         }
-
-        // const Input = styled.input`
-        // border: 2px solid red;
-        // border-radius: 5px;
-        // color: red;
-        // border-radius: 3px;
-        // font-size: 14px;
-        // `
-
-
-
-
 
         return (
             <div>
@@ -150,3 +138,6 @@ class GardensPage extends Component {
 
 export default GardensPage
 
+const Span = styled.span`
+    padding-left: 5px;
+    `
