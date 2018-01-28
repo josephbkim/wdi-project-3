@@ -96,7 +96,8 @@ class GardensPage extends Component {
 
         return (
             <div>
-                <h3>Gardens</h3>
+                <h4>Find a shared garden near you!</h4>
+                <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
                 <div>
                     {gardensList}
                 </div>
@@ -115,6 +116,10 @@ const TrashSpan = styled.span`
     padding-left: 5px;
     font-size: 16px;
     color: #6b983f;
+    width: 50px;
+    &:hover {
+        color: #571B0D;
+    }
     `
 const GardenSpan = styled.span`
     color: #6b983f;

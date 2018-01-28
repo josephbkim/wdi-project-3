@@ -48,9 +48,8 @@ class UsersList extends Component {
 
     updateGarden = async (event) => {
         event.preventDefault()
-        console.log("Updating Garden in DB")
         try {
-            event.preventDefault()
+
             console.log("this is updating to this garden:", this.state.garden.name)
             const response = await axios.patch(`/api/gardens/${this.state.garden._id}`, this.state.garden)
             this.setState({
@@ -119,10 +118,10 @@ class UsersList extends Component {
 
 
                 <Button onClick={this.deleteGarden}>
-                    Delete {garden.name}
+                    Delete This Garden
                 </Button>
                 <Button onClick={this.toggleEditForm}>
-                    Edit {garden.name}
+                    Edit Garden Info
                 </Button>
                 <div>
                     {
@@ -169,7 +168,15 @@ const UserContainer = styled.div`
     margin: 20px;
     padding: 10px;
     border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        border: 8px #6B983F solid;
+        color: #571B0D;
+    }
     `
+
 
 const newFormStyle = {
     // border: '5px solid green',
@@ -181,11 +188,13 @@ const newFormStyle = {
 
 }
 
-const UserNameColor = styled.span`
+const UserNameColor = styled.div`
     color: #6B983F;
     text-transform: uppercase;
+    font-size: 20px;
 `
 const PlantTypeCount = styled.div`
     color: #571B0D;
     text-align: center;
+
 `

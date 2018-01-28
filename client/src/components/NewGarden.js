@@ -5,8 +5,7 @@ import styled from 'styled-components'
 function NewGarden(props) {
     return (
         <div>
-            <h5>Have shared garden space to rent out?</h5>
-            <h6>Add your space below:</h6>
+            <h6>Do you own a shared garden space? Sign up below to track your garden and the gardeners sharing the space</h6>
             <div>
                 <form style={newFormStyle} onSubmit={props.createGarden}>
                     <div>

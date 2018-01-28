@@ -8,9 +8,9 @@ function GardenEdit(props) {
     // if (props.redirect) {
     //     return (<Redirect to={`/users/${props.id}`} />)
     // }
-    if (props.redirect) {
-        <Redirect to={`/gardens`} />
-    }
+    // if (props.redirect) {
+    //     <Redirect to={`/gardens`} />
+    // }
 
     
     return (
@@ -34,7 +34,7 @@ function GardenEdit(props) {
                     <input onChange={props.handleChange} name="state" type="text" value={props.garden.state} />
                 </div>
                 <div>
-                    <SubmitButton />
+                    <Button>Submit</Button>
                 </div>
             </form>
         </div>
