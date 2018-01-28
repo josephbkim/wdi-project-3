@@ -12,8 +12,8 @@ class UsersList extends Component {
             users: []
         },
         user: {
-            // firstName: '',
-            // email: ''
+            firstName: '',
+            email: ''
         },
         editFormShowing: false,
         addFormShowing: false
@@ -21,18 +21,6 @@ class UsersList extends Component {
 
     componentWillMount = () => {
         this.getAllUsers()
-    }
-
-    getAllUsers = async () => {
-        try {
-            console.log('getting users')
-            const gardenId = this.props.match.params.gardenId
-            const response = await axios.get(`/api/gardens/${gardenId}/users`)
-            this.setState({ garden: response.data })
-        }
-        catch (err) {
-            console.log(`Catch errror ----- ${err}`)
-        }
     }
 
     // ==============================
@@ -51,12 +39,24 @@ class UsersList extends Component {
         event.preventDefault()
         const user = { ...this.state.user }
         user[event.target.name] = event.target.value
-        console.log("New User:", user)
+        this.setState({user})
     }
 
     // ==============================
-    //     CRUD FUNCTIONS
+    //   CRUD for Users and Gardens
     // ==============================
+
+    getAllUsers = async () => {
+        try {
+            console.log('getting users')
+            const gardenId = this.props.match.params.gardenId
+            const response = await axios.get(`/api/gardens/${gardenId}/users`)
+            this.setState({ garden: response.data })
+        }
+        catch (err) {
+            console.log(`Catch errror ----- ${err}`)
+        }
+    }
 
     updateGarden = async (event) => {
         event.preventDefault()
@@ -84,14 +84,14 @@ class UsersList extends Component {
             firstName: '',
             email: ''
         }
-        console.log("GARDEN ID", this.state.garden._id)
-        await axios(`/api/gardens/${this.state.garden._id}/users`, payload)
+        console.log("GARDEN ID", payload)
+        
+        await axios.post(`/api/gardens/${this.state.garden._id}/users`, payload)
         await this.getAllUsers()
-        this.setState({ user: blankForm })
     }
 
     // ==============================
-    //        TOGGLERS
+    //        FORM TOGGLERS
     // ==============================
 
     toggleEditForm = () => {
