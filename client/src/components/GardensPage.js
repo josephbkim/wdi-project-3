@@ -79,9 +79,10 @@ class GardensPage extends Component {
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
-            return (<div key={index}><Link to={`/gardens/${garden._id}/users`}><GardenSpan>{garden.name}</GardenSpan></Link>
+            return (<GardenContainer key={index}><Link to={`/gardens/${garden._id}/users`}><GardenSpan>{garden.name}</GardenSpan></Link>
                 <TrashSpan type="submit" onClick={() => this.deleteGarden(garden)}><GoTrashcan /> </TrashSpan>
-            </div>)
+                <CityState>{garden.city}, {garden.state}</CityState>
+            </GardenContainer>)
         })
 
         const newFormStyle = {
@@ -113,7 +114,7 @@ class GardensPage extends Component {
 export default GardensPage
 
 const TrashSpan = styled.span`
-    padding-left: 5px;
+    padding: 0 0 20px 15px;
     font-size: 16px;
     color: #6b983f;
     width: 50px;
@@ -123,5 +124,17 @@ const TrashSpan = styled.span`
     `
 const GardenSpan = styled.span`
     color: #6b983f;
+    &:hover {
+        color: #571B0D;
+    }
     `
 
+
+const GardenContainer = styled.div`
+    padding: 15px 10px 0px 10px;
+    font-size: 20px;
+`
+const CityState = styled.div`
+    color: #571B0D;
+    font-size: 12px;
+`
