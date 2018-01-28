@@ -50,6 +50,9 @@ app.use('/api/gardens/:gardenId/users', UsersController)
 const PlantsController = require('./controllers/plantsController')
 app.use('/api/gardens/:gardenId/users/:userId/plants', PlantsController)
 
+const APIController = require('./controllers/apiController')
+app.use('/api/weather', APIController)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
