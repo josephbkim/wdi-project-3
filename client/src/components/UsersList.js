@@ -11,7 +11,10 @@ class UsersList extends Component {
         garden: {
             users: []
         },
-        user: '',
+        user: {
+            // firstName: '',
+            // email: ''
+        },
         editFormShowing: false,
         addFormShowing: false
     }
@@ -32,6 +35,10 @@ class UsersList extends Component {
         }
     }
 
+    // ==============================
+    //     FORM EVENT HANDLERS
+    // ==============================
+
     handleGardenChange = (event) => {
         event.preventDefault()
         const garden = { ...this.state.garden }
@@ -42,16 +49,14 @@ class UsersList extends Component {
 
     handleUserChange = (event) => {
         event.preventDefault()
-        const user = {...this.state.user}
+        const user = { ...this.state.user }
         user[event.target.name] = event.target.value
         console.log("New User:", user)
     }
 
-    // deleteGarden = async (garden) => {
-    //     console.log("Deleting!")
-    //     await axios.delete(`/api/gardens/${garden._id}`)
-    //     // const gardenIndexToDelete = this.state.garden
-    // }
+    // ==============================
+    //     CRUD FUNCTIONS
+    // ==============================
 
     updateGarden = async (event) => {
         event.preventDefault()
@@ -69,9 +74,25 @@ class UsersList extends Component {
         }
     }
 
-    createNewUser = () => {
-
+    createNewUser = async (event) => {
+        event.preventDefault()
+        const payload = {
+            firstName: this.state.user.firstName,
+            email: this.state.user.email
+        }
+        const blankForm = {
+            firstName: '',
+            email: ''
+        }
+        console.log("GARDEN ID", this.state.garden._id)
+        await axios(`/api/gardens/${this.state.garden._id}/users`, payload)
+        await this.getAllUsers()
+        this.setState({ user: blankForm })
     }
+
+    // ==============================
+    //        TOGGLERS
+    // ==============================
 
     toggleEditForm = () => {
         const editFormShowing = !this.state.editFormShowing
@@ -92,7 +113,7 @@ class UsersList extends Component {
     render() {
 
         const garden = this.state.garden
-        const userCount = this.state.garden.users.length
+        // const userCount = this.state.garden.users.length
 
         return (
             <div>
@@ -100,7 +121,7 @@ class UsersList extends Component {
 
                 <GardenDetail
                     garden={this.state.garden}
-                    userCount={userCount}
+                // userCount={userCount}
                 />
 
                 <UserListContainer>
@@ -141,10 +162,10 @@ class UsersList extends Component {
                     {
                         this.state.editFormShowing ?
                             <div>
-                                <GardenEdit 
-                                    updateGarden={this.updateGarden} 
+                                <GardenEdit
+                                    updateGarden={this.updateGarden}
                                     garden={this.state.garden}
-                                    handleGardenChange={this.handleGardenChange} 
+                                    handleGardenChange={this.handleGardenChange}
                                     // redirect={this.state.redirect} 
                                     editFormShowing={this.editFormShowing} />
                             </div>
@@ -155,11 +176,11 @@ class UsersList extends Component {
                     {
                         this.state.addFormShowing ?
                             <div>
-                                <NewUserForm 
-                                    createNewUser={this.createNewUser} 
+                                <NewUserForm
+                                    createNewUser={this.createNewUser}
                                     user={this.state.user}
                                     handleUserChange={this.handleUserChange}
-                                    addFormShowing={this.addFormShowing} 
+                                    addFormShowing={this.addFormShowing}
                                 />
                             </div>
                             : null

@@ -12,13 +12,13 @@ function NewUserForm(props) {
                         <label htmlFor="firstName">First Name</label>
                     </div>
                     <div>
-                        <input className="form-input" onChange={props.handleUserChange} name="firstName" type="text" value={props.user.firstName} />
+                        <input onChange={props.handleUserChange} name="firstName" type="text" value={props.user.firstName} />
                     </div>
                     <div>
-                        <label htmlFor="address">E-mail</label>
+                        <label htmlFor="email">E-mail</label>
                     </div>
                     <div>
-                        <input onChange={props.handleUserChange} name="address" type="text" value={props.user.email} />
+                        <input onChange={props.handleUserChange} name="email" type="text" value={props.user.email} />
                     </div>
 
                     <div>
