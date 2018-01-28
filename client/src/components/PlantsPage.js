@@ -26,24 +26,15 @@ class PlantsPage extends Component {
     }
 
     render() {
-        
-        const PlantList = styled.div`
-        border: 5px solid brown;
-        border-radius: 5px;
-        margin: 20px;
-        padding: 20px;
-        `
-        
+
         let plantsList = []
-        if(this.state.user && this.state.user.plants) {
+        if (this.state.user && this.state.user.plants) {
             plantsList = this.state.user.plants.map((plant, index) => {
-                return <div key={index}>
-                            <div>{plant.name}</div>
-                            <div>Number of Plants: {plant.quantity}</div>
-                            <div>{plant.sunlightNeeded}</div>
-                            {/* <div>{}</div>
-                            <div>{}</div> */}
-                        </div>
+                return <Plant key={index}>
+                    <div>{plant.name}</div>
+                    <div>Number of Plants: {plant.quantity}</div>
+                    <div>{plant.sunlightNeeded}</div>
+                </Plant>
             })
         }
 
@@ -55,8 +46,14 @@ class PlantsPage extends Component {
                     {plantsList}
 
                 </PlantList>
+                <Link to={`/gardens/${this.props.match.params.gardenId}/users`}>
+                    <Button>
+                        Back to Users
+                    </Button>
+                </Link >
 
             </div>
+
 
         )
     }
@@ -64,3 +61,38 @@ class PlantsPage extends Component {
 }
 
 export default PlantsPage
+
+const PlantList = styled.div`
+    background-color: #bfd964;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+`
+
+const Plant = styled.div`
+    border: 8px #571B0D solid; 
+    width: 180px; 
+    height: 180px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        border: 8px #6B983F solid;
+        color: #571B0D;
+    }
+`
+
+const Button = styled.button`
+border-radius: 5px;
+background-color: #6B983F;
+color: #bfd964;
+border-radius: 5px;
+padding: 5px;
+margin: 8px;
+`

@@ -117,9 +117,9 @@ class UsersList extends Component {
                 }
 
 
-                <Button onClick={this.deleteGarden}>
+                {/* <Button onClick={this.deleteGarden}>
                     Delete This Garden
-                </Button>
+                </Button> */}
                 <Button onClick={this.toggleEditForm}>
                     Edit Garden Info
                 </Button>
