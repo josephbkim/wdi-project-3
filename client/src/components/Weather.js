@@ -4,39 +4,42 @@ import axios from 'axios'
 class Weather extends Component {
     state = {
         city: '',
-        state: ''
+        state: '',
+        precip_i: '',
+        temp: ''
     }
     componentWillMount = () => {
-        // this.getHistoricalWeather() 
+        this.getCurrentWeather()
     }
     getHistoricalWeather = async () => {
-        const response = await axios.get('https://api.weatherbit.io/v2.0/history/daily', {
-            params: {
-                api_key: 'ab01c5618f2446f8a8b7efe555e0da4e',
-                city: 'Atlanta',
-                state: 'GA', 
-                start_date: '2018-01-25',
-                end_date: '2018-01-26', 
-            }
-        })
-        console.log(response.data.precip + ' - mms')
+
     }
 
     getCurrentWeather = async () => {
-        const response = await axios.get('https://api.weatherbit.io/v2.0/current', {
-            params: {
-                api_key: 'ab01c5618f2446f8a8b7efe555e0da4e',
-                city: 'Atlanta',
-                state: 'GA', 
-                start_date: '2018-01-25',
-                end_date: '2018-01-26', 
-            }
+        const weather = await axios.get('/api/weather/current')
+        const weatherToday = weather.data.current_observation
+        console.log(weatherToday)
+        this.setState({
+            precip_i: weatherToday.precip_today_string,
+            temp: weatherToday.temperature_string
         })
     }
+
+
     render() {
         return (
 
-            <div>hello from weather api</div>
+            <div>
+                <div></div>
+                <div>
+                    Today's Rainfall: {this.state.precip_i}
+                </div>
+                <div>
+                    Current Temperature: {this.state.temp}
+                </div>
+
+
+            </div>
         )
     }
 

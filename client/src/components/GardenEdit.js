@@ -5,14 +5,7 @@ import SubmitButton from './SubmitButton'
 
 
 function GardenEdit(props) {
-    // if (props.redirect) {
-    //     return (<Redirect to={`/users/${props.id}`} />)
-    // }
-    // if (props.redirect) {
-    //     <Redirect to={`/gardens`} />
-    // }
-
-    
+        
     return (
         <div>
             <h6>Edit Shared Garden Info</h6>

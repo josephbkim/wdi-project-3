@@ -84,8 +84,6 @@ class UsersList extends Component {
             firstName: '',
             email: ''
         }
-        console.log("GARDEN ID", payload)
-        
         await axios.post(`/api/gardens/${this.state.garden._id}/users`, payload)
         await this.getAllUsers()
     }
@@ -149,9 +147,6 @@ class UsersList extends Component {
                     </Link >
                 }
 
-                {/* <Button onClick={this.deleteGarden}>
-                    Delete This Garden
-                </Button> */}
                 <Button onClick={this.toggleEditForm}>
                     Edit Garden Info
                 </Button>

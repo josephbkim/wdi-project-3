@@ -73,9 +73,6 @@ class GardensPage extends Component {
         this.setState({ garden: blankForm })
     }
 
-
-
-
     render() {
 
         const gardensList = this.state.gardens.map((garden, index) => {
@@ -128,8 +125,7 @@ const GardenSpan = styled.span`
         color: #571B0D;
     }
     `
-
-
+    
 const GardenContainer = styled.div`
     padding: 15px 10px 0px 10px;
     font-size: 20px;
