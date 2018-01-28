@@ -4,8 +4,7 @@ import styled from 'styled-components'
 // import GoTrashcan from react-icons/lib/go/trashcan
 
 const GardenDetail = (props) => {
-    // console.log(props.garden.totalNumberOfPlots)
-    console.log('garden detail component')
+
     return (
         <GardenDiv>
             <div>{props.garden.name}</div>

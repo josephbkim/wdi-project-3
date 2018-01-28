@@ -4,6 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import GardenDetail from './GardenDetail'
 import GardenEdit from './GardenEdit'
+import NewUserForm from './NewUserForm'
 
 class UsersList extends Component {
     state = {
@@ -12,7 +13,7 @@ class UsersList extends Component {
         },
         user: '',
         editFormShowing: false,
-        // redirect: false
+        addFormShowing: false
     }
 
     componentWillMount = () => {
@@ -31,13 +32,19 @@ class UsersList extends Component {
         }
     }
 
-    handleChange = (event) => {
-        console.log("Handle Change Method")
+    handleGardenChange = (event) => {
         event.preventDefault()
         const garden = { ...this.state.garden }
         garden[event.target.name] = event.target.value
         console.log("Updated Garden:", garden)
         this.setState({ garden })
+    }
+
+    handleUserChange = (event) => {
+        event.preventDefault()
+        const user = {...this.state.user}
+        user[event.target.name] = event.target.value
+        console.log("New User:", user)
     }
 
     // deleteGarden = async (garden) => {
@@ -52,9 +59,9 @@ class UsersList extends Component {
 
             console.log("this is updating to this garden:", this.state.garden.name)
             const response = await axios.patch(`/api/gardens/${this.state.garden._id}`, this.state.garden)
+            console.log("TESTING STATE", this.state.garden.users[0])
             this.setState({
                 garden: response.data,
-                redirect: true,
                 editFormShowing: false
             })
         } catch (err) {
@@ -62,21 +69,27 @@ class UsersList extends Component {
         }
     }
 
+    createNewUser = () => {
+
+    }
+
     toggleEditForm = () => {
+        const editFormShowing = !this.state.editFormShowing
         this.setState({
-            editFormShowing: true
+            addFormShowing: false,
+            editFormShowing
+        })
+    }
+
+    toggleAddUserForm = () => {
+        const addFormShowing = !this.state.addFormShowing
+        this.setState({
+            editFormShowing: false,
+            addFormShowing
         })
     }
 
     render() {
-        {
-            this.state.editFormShowing ?
-                <div>
-                    <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
-                        handleChange={this.handleChange} redirect={this.state.redirect} />
-                </div>
-                : null
-        }
 
         const garden = this.state.garden
         const userCount = this.state.garden.users.length
@@ -107,7 +120,6 @@ class UsersList extends Component {
                     }
                 </UserListContainer>
 
-
                 {
                     <Link to={`/gardens`}>
                         <Button>
@@ -116,20 +128,39 @@ class UsersList extends Component {
                     </Link >
                 }
 
-
                 {/* <Button onClick={this.deleteGarden}>
                     Delete This Garden
                 </Button> */}
                 <Button onClick={this.toggleEditForm}>
                     Edit Garden Info
                 </Button>
+                <Button onClick={this.toggleAddUserForm}>
+                    Add New Gardener
+                </Button>
                 <div>
                     {
                         this.state.editFormShowing ?
                             <div>
-                                <GardenEdit updateGarden={this.updateGarden} garden={this.state.garden}
-                                    handleChange={this.handleChange} redirect={this.state.redirect} 
+                                <GardenEdit 
+                                    updateGarden={this.updateGarden} 
+                                    garden={this.state.garden}
+                                    handleGardenChange={this.handleGardenChange} 
+                                    // redirect={this.state.redirect} 
                                     editFormShowing={this.editFormShowing} />
+                            </div>
+                            : null
+                    }
+                </div>
+                <div>
+                    {
+                        this.state.addFormShowing ?
+                            <div>
+                                <NewUserForm 
+                                    createNewUser={this.createNewUser} 
+                                    user={this.state.user}
+                                    handleUserChange={this.handleUserChange}
+                                    addFormShowing={this.addFormShowing} 
+                                />
                             </div>
                             : null
                     }
@@ -177,7 +208,6 @@ const UserContainer = styled.div`
     }
     `
 
-
 const newFormStyle = {
     // border: '5px solid green',
     // backgroundColor: '#BEEE62',
@@ -185,7 +215,6 @@ const newFormStyle = {
     fontSize: 14,
     color: '#6b983f',
     padding: '20px',
-
 }
 
 const UserNameColor = styled.div`

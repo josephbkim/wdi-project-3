@@ -32,8 +32,8 @@ class PlantsPage extends Component {
             plantsList = this.state.user.plants.map((plant, index) => {
                 return <Plant key={index}>
                     <div>{plant.name}</div>
-                    <div>Number of Plants: {plant.quantity}</div>
-                    <div>{plant.sunlightNeeded}</div>
+                    <div> {plant.quantity}</div>
+                    {/* <div>{plant.sunlightNeeded}</div> */}
                 </Plant>
             })
         }

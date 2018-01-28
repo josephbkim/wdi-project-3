@@ -18,23 +18,21 @@ class App extends Component {
     `
 
     return (
-      <div>
-        <SiteBackground>
-          <Header>
-            Garden Share
+      <SiteBackground>
+        <Header>
+          Garden Share
         </Header>
 
-          <Router>
-            <Switch>
-              <Route exact path='/' component={HomePage} />
-              <Route exact path='/gardens' component={GardensPage} />
-              {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
-              <Route exact path='/gardens/:gardenId/users' component={UsersList} />
-              <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
-            </Switch>
-          </Router>
-        </SiteBackground>
-      </div>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/gardens' component={GardensPage} />
+            {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
+            <Route exact path='/gardens/:gardenId/users' component={UsersList} />
+            <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
+          </Switch>
+        </Router>
+      </SiteBackground>
     );
   }
 }

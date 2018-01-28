@@ -19,19 +19,19 @@ function GardenEdit(props) {
             <form style={newFormStyle} onSubmit={props.updateGarden}>
                 <div>
                     <label htmlFor="name">Garden Name</label>
-                    <input onChange={props.handleChange} name="name" type="text" value={props.garden.name} />
+                    <input onChange={props.handleGardenChange} name="name" type="text" value={props.garden.name} />
                 </div>
                 <div>
                     <label htmlFor="address">Address</label>
-                    <input onChange={props.handleChange} name="address" type="text" value={props.garden.address} />
+                    <input onChange={props.handleGardenChange} name="address" type="text" value={props.garden.address} />
                 </div>
                 <div>
                     <label htmlFor="city">City</label>
-                    <input onChange={props.handleChange} name="city" type="text" value={props.garden.city} />
+                    <input onChange={props.handleGardenChange} name="city" type="text" value={props.garden.city} />
                 </div>
                 <div>
                     <label htmlFor="state">State</label>
-                    <input onChange={props.handleChange} name="state" type="text" value={props.garden.state} />
+                    <input onChange={props.handleGardenChange} name="state" type="text" value={props.garden.state} />
                 </div>
                 <div>
                     <Button>Submit</Button>
