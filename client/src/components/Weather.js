@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import axios from 'axios'
+import styled from 'styled-components'
 
 class Weather extends Component {
     state = {
@@ -29,20 +30,32 @@ class Weather extends Component {
     render() {
         return (
 
-            <div>
-                <div></div>
+            <WeatherDiv>
                 <div>
-                    Today's Rainfall: {this.state.precip_i}
+                    Today's Rainfall: <WeatherSpan>{this.state.precip_i}</WeatherSpan>
                 </div>
                 <div>
-                    Current Temperature: {this.state.temp}
+                    Current Temperature:<WeatherSpan> {this.state.temp}</WeatherSpan>
                 </div>
 
 
-            </div>
+            </WeatherDiv>
         )
     }
 
 }
 
 export default Weather
+
+const WeatherDiv = styled.div`
+    color: #571B0D;
+    padding: 15px;   
+    font-size: 22px;
+    border: 5px solid #571B0D;
+    margin: 0 20px;
+    max-width: 450px;
+`
+const WeatherSpan = styled.span`
+    color: #6B983F;
+
+`

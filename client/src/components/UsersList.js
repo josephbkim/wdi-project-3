@@ -116,11 +116,12 @@ class UsersList extends Component {
 
         return (
             <div> 
-                <Weather />
+                
                 <GardenDetail
                     garden={this.state.garden}
                 // userCount={userCount}
                 />
+                <Weather />
 
                 <UserListContainer>
                     {
@@ -218,6 +219,7 @@ const UserContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     &:hover {
         border: 8px #6B983F solid;
         color: #571B0D;
