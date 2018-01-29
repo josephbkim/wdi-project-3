@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import GardenDetail from './GardenDetail'
 import GardenEdit from './GardenEdit'
 import NewUserForm from './NewUserForm'
+import Weather from './Weather'
 
 class UsersList extends Component {
     state = {
@@ -114,9 +115,8 @@ class UsersList extends Component {
         // const userCount = this.state.garden.users.length
 
         return (
-            <div>
-
-
+            <div> 
+                <Weather />
                 <GardenDetail
                     garden={this.state.garden}
                 // userCount={userCount}
