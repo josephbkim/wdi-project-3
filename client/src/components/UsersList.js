@@ -87,7 +87,12 @@ class UsersList extends Component {
             email: ''
         }
         await axios.post(`/api/gardens/${this.state.garden._id}/users`, payload)
+
         await this.getAllUsers()
+        this.setState({
+            addFormShowing: false,
+            user: blankForm
+        })
     }
 
     deleteUser = async (user) => {

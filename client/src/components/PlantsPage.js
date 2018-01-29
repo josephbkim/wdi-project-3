@@ -26,6 +26,10 @@ class PlantsPage extends Component {
         }
     }
 
+    createNewPlant = () => {
+        
+    }
+
     render() {
 
         let plantsList = []
@@ -37,8 +41,6 @@ class PlantsPage extends Component {
                         </Plant>
             })
         }
-
-        // const gardenName = 
 
         return (
             <div>
