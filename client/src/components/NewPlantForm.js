@@ -18,7 +18,7 @@ function NewPlantForm(props) {
                         <label htmlFor="quantity">Number Planted</label>
                     </div>
                     <div>
-                        <input onChange={props.handlePlantChange} name="quantity" type="text" value={props.plant.quantity} />
+                        <input onChange={props.handlePlantChange} name="quantity" type="number" value={props.plant.quantity} />
                     </div>
                     <div>
                         <label htmlFor="sunlightNeeded">How much sunlight is needed?</label>

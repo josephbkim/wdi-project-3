@@ -6,7 +6,7 @@ class WeatherExtended extends Component {
     render(){
         return (
             <div>
-                <div>It feels like: <WeatherSpan> {this.props.feelslike_f} degrees </WeatherSpan></div>
+                <div>Feels like: <WeatherSpan> {this.props.feelslike_f} F</WeatherSpan></div>
                 <div>Relative humidity:<WeatherSpan> {this.props.relative_humidity}</WeatherSpan></div>
                 
                 <div>Dewpoint: <WeatherSpan>{this.props.dewpoint_string}</WeatherSpan></div>
