@@ -2,7 +2,7 @@
 
 This is an app for finding shared garden spaces to rent out in your area. You can also see what others in your plot are growing and if they are interested in sharing, selling, buying, or bartering.
 
-Link to site
+### Link to site
 https://fierce-spire-98602.herokuapp.com/
 
 ### Technologies/Frameworks used:

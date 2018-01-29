@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import Weather from './Weather'
 // import PlantsList from './PlantsList'
 
 class PlantsPage extends Component {
@@ -41,8 +42,9 @@ class PlantsPage extends Component {
 
         return (
             <div>
+                <Weather />
 
-                <h5>{this.state.user.firstName}'s Plants</h5>
+                <UserTitle>{this.state.user.firstName}'s Plants</UserTitle>
                 <PlantList>
                     {plantsList}
 
@@ -96,4 +98,7 @@ color: #bfd964;
 border-radius: 5px;
 padding: 5px;
 margin: 8px;
+`
+const UserTitle = styled.h5`
+    padding-left: 20px;
 `

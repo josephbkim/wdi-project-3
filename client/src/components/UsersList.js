@@ -139,8 +139,10 @@ class UsersList extends Component {
                 
                 <GardenDetail
                     garden={this.state.garden}
-                userCount={userCount}
+                    userCount={userCount}
                 />
+
+                <div>Weather Detail in {this.state.garden.city}</div>
                 <Weather />
 
                 <UserListContainer>
