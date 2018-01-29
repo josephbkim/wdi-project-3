@@ -154,10 +154,11 @@ class UsersList extends Component {
                                 <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>
                                     <UserContainer>
                                         <UserNameColor>{user.firstName}</UserNameColor>
+                                        
                                     </UserContainer>
                                 </Link>
-                                <div type="submit" onClick={() => this.deleteUser(user)}><GoTrashcan /> </div>
                                 <PlantTypeCount>Types of Plants: {user.plants.length}</PlantTypeCount>
+                                <TrashIcon type="submit" onClick={() => this.deleteUser(user)}><GoTrashcan /> </TrashIcon>
 
                             </div>)
                         })
@@ -222,6 +223,7 @@ const UserListContainer = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
+    max-width: 615px;
     `
 
 const Button = styled.button`
@@ -237,7 +239,7 @@ const UserContainer = styled.div`
     border: 8px #571B0D solid; 
     width: 150px; 
     height: 150px;
-    margin: 20px;
+    margin: 20px 20px 8px 20px;
     padding: 10px;
     border-radius: 2px;
     display: flex;
@@ -268,4 +270,16 @@ const PlantTypeCount = styled.div`
     color: #571B0D;
     text-align: center;
 
+`
+
+const TrashIcon = styled.div`
+    font-size: 16px;
+    color: #6b983f;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    &:hover {
+        color: #571B0D;
+}
 `

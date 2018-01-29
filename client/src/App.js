@@ -8,6 +8,7 @@ import GardensPage from './components/GardensPage'
 import UsersList from './components/UsersList'
 import PlantsPage from './components/PlantsPage'
 import Weather from './components/Weather'
+// import TitleLogo from './public/colors_plantapp_logo.png'
 
 class App extends Component {
 
@@ -21,7 +22,9 @@ class App extends Component {
     return (
       <SiteBackground>
         <Header>
-          Garden Share
+          <div>
+            <LogoImg src={require('./colors_plantapp_logo.png')} alt="" />
+          </div>
         </Header>
 
         <Router>
@@ -32,7 +35,7 @@ class App extends Component {
             {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
             <Route exact path='/gardens/:gardenId/users' component={UsersList} />
             <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
-            
+
           </Switch>
         </Router>
       </SiteBackground>
@@ -52,3 +55,8 @@ const SiteBackground = styled.div`
   
 }
 ` */
+
+const LogoImg = styled.img`
+  height: 170px;
+  
+`

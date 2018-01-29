@@ -51,9 +51,10 @@ const WeatherDiv = styled.div`
     color: #571B0D;
     padding: 15px;   
     font-size: 22px;
-    border: 5px solid #571B0D;
+    background-color: #A7DDE6;
     margin: 0 20px;
     max-width: 450px;
+    border-radius: 5px;
 `
 const WeatherSpan = styled.span`
     color: #6B983F;

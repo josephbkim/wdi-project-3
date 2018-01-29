@@ -27,7 +27,7 @@ export default GardenDetail
 const GardenDiv = styled.div`
 color: #6b983f;
 border-radius: 5px;
-margin: 20px;
+margin: 0;
 padding: 20px;
 width: 40%;
 
