@@ -29,12 +29,14 @@ class App extends Component {
 
         <Router>
           <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/gardens' component={GardensPage} />
-            <Route exact path='/weather' component={Weather} />
-            {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
-            <Route exact path='/gardens/:gardenId/users' component={UsersList} />
-            <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
+            <Body>
+              <Route exact path='/' component={HomePage} />
+              <Route exact path='/gardens' component={GardensPage} />
+              <Route exact path='/weather' component={Weather} />
+              {/* <Route exact path="/gardens/newGarden" render={NewGarden}/> */}
+              <Route exact path='/gardens/:gardenId/users' component={UsersList} />
+              <Route exact path='/gardens/:gardenId/users/:userId/plants' component={PlantsPage} />
+            </Body>
 
           </Switch>
         </Router>
@@ -59,4 +61,8 @@ const SiteBackground = styled.div`
 const LogoImg = styled.img`
   height: 170px;
   
+`
+
+const Body = styled.body`
+padding-left: 40px;
 `

@@ -7,16 +7,16 @@ const GardenDetail = (props) => {
 
     return (
         <GardenDiv>
-            <div>{props.garden.name}</div>
-            <div>Description: {props.garden.description}</div>
-            <div>Address:</div>
+            <NameDiv>{props.garden.name}</NameDiv>
+            <div><BoldSpan>Description:</BoldSpan> {props.garden.description}</div>
+            <BoldDiv>Address:</BoldDiv>
             <div>{props.garden.address}</div>
             <div>{props.garden.city}, {props.garden.state}</div>
-            <div>Number of Gardeners: {props.userCount}</div>
-            <div>Number of Available Plots:
+            <div><BoldSpan>Number of Gardeners: </BoldSpan> {props.userCount}</div>
+            <div><BoldSpan>Number of Available Plots: </BoldSpan>
                 {Number(props.garden.totalNumberOfPlots) - Number(props.userCount)}
             </div>
-            <div>Cost of Plot: </div>
+            <div><BoldSpan>Yearly Fee:</BoldSpan> $ {props.garden.costOfPlot}</div>
         </GardenDiv>
     );
 }
@@ -25,10 +25,21 @@ export default GardenDetail
 
 
 const GardenDiv = styled.div`
-color: #6b983f;
-border-radius: 5px;
-margin: 0;
-padding: 20px;
-width: 40%;
+    color: #6b983f;
+    border-radius: 5px;
+    margin: 0;
+    padding: 20px;
+    width: 40%;
 
+`
+const NameDiv = styled.div`
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 20px;
+`
+const BoldDiv = styled.div`
+    font-weight: bold;
+`
+const BoldSpan = styled.span`
+    font-weight: bold;
 `

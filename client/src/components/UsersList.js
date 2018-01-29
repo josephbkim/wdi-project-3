@@ -18,8 +18,7 @@ class UsersList extends Component {
             email: ''
         },
         editFormShowing: false,
-        addFormShowing: false,
-        redirect: false
+        addFormShowing: false
     }
 
     componentWillMount = () => {
@@ -129,20 +128,18 @@ class UsersList extends Component {
     }
 
     render() {
-        if (this.redirect) {
-            return <Redirect to={`/gardens/${garden._id}/users/`} />
-        }
 
 
         const garden = this.state.garden
-        // const userCount = this.state.garden.users.length
+        const userCount = this.state.garden.users.length
+        console.log("USERCOUNT", userCount)
 
         return (
             <div> 
                 
                 <GardenDetail
                     garden={this.state.garden}
-                // userCount={userCount}
+                userCount={userCount}
                 />
                 <Weather />
 

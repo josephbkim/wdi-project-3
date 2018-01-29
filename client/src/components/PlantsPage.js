@@ -31,17 +31,18 @@ class PlantsPage extends Component {
         if (this.state.user && this.state.user.plants) {
             plantsList = this.state.user.plants.map((plant, index) => {
                 return <Plant key={index}>
-                    <div>{plant.name}</div>
-                    <div> {plant.quantity}</div>
-                    {/* <div>{plant.sunlightNeeded}</div> */}
-                </Plant>
+                            <div>{plant.name}</div>
+                            <div> {plant.quantity}</div>
+                        </Plant>
             })
         }
+
+        // const gardenName = 
 
         return (
             <div>
 
-                <div>Hello from Plants Page</div>
+                <h5>{this.state.user.firstName}'s Plants</h5>
                 <PlantList>
                     {plantsList}
 
