@@ -37,11 +37,10 @@ router.delete('/:plantId', async (request, response) => {
     console.log("Deleting:", request.params.userId)
     try {
         const garden = await Garden.findById(request.params.gardenId)
-        console.log("Got garden:", garden)
-        const user = garden.users.id(request.params.userId).remove()
+        const user = garden.users.id(request.params.userId)
+        user.plants.id(request.params.plantId).remove()
         await garden.save()
-        console.log("Saved garden after removing user")
-        // response.redirect(`/garden/${gardenId}/users`)
+        console.log("Saved garden after removing plant")
         response.json(user)
     }
     catch (err) {
