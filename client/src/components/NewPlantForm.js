@@ -12,19 +12,19 @@ function NewPlantForm(props) {
                         <label htmlFor="name">Type of Plant</label>
                     </div>
                     <div>
-                        <input onChange={props.handlePlantChange} name="name" type="text" value={props.user.name} />
+                        <input onChange={props.handlePlantChange} name="name" type="text" value={props.plant.name} />
                     </div>
                     <div>
                         <label htmlFor="quantity">Number Planted</label>
                     </div>
                     <div>
-                        <input onChange={props.handlePlantChange} name="email" type="text" value={props.user.quantity} />
+                        <input onChange={props.handlePlantChange} name="quantity" type="text" value={props.plant.quantity} />
                     </div>
                     <div>
                         <label htmlFor="sunlightNeeded">How much sunlight is needed?</label>
                     </div>
                     <div>
-                        <input onChange={props.handlePlantChange} name="sunlightNeeded" type="text" value={props.user.sunlightNeeded} />
+                        <input onChange={props.handlePlantChange} name="sunlightNeeded" type="text" value={props.plant.sunlightNeeded} />
                     </div>
 
                     <div>

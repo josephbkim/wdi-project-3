@@ -9,6 +9,7 @@ const GardenDetail = (props) => {
         <GardenDiv>
             <NameDiv>{props.garden.name}</NameDiv>
             <div><BoldSpan>Description:</BoldSpan> {props.garden.description}</div>
+            <br/>
             <BoldDiv>Address:</BoldDiv>
             <div>{props.garden.address}</div>
             <div>{props.garden.city}, {props.garden.state}</div>
@@ -25,12 +26,12 @@ export default GardenDetail
 
 
 const GardenDiv = styled.div`
+    
     color: #6b983f;
     border-radius: 5px;
     margin: 0;
     padding: 20px;
-    width: 40%;
-
+    max-width: 550px;
 `
 const NameDiv = styled.div`
     font-size: 22px;

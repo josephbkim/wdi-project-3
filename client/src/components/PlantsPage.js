@@ -34,8 +34,8 @@ class PlantsPage extends Component {
 
     handlePlantChange = (event) => {
         event.preventDefault()
-        const plant = { ...this.state.user }
-        plant[event.target.name] = event.target.name
+        const plant = { ...this.state.plant }
+        plant[event.target.name] = event.target.value
         this.setState({
             plant
         })
@@ -46,19 +46,22 @@ class PlantsPage extends Component {
         event.preventDefault()
         const gardenId = this.props.match.params.gardenId
         const userId = this.props.match.params.userId
+
         const payload = {
             name: this.state.plant.name,
-            plant: this.state.plant.quantity
+            plant: this.state.plant.quantity,
+            sunlightNeeded: this.state.sunlightNeeded
         }
         const blankForm = {
             name: '',
-            plant: ''
+            plant: '',
+            sunlightNeeded: ''
         }
-        await axios.post(`/api/gardens/${this.state.gardenId}/users/${userId}/plants`, payload)
-        await this.getAllUsers()
+        await axios.post(`/api/gardens/${gardenId}/users/${userId}/plants`, payload)
+        await this.getAllPlants()
         this.setState({
             addFormShowing: false,
-            user: blankForm
+            plant: blankForm
         })
     }
 
@@ -92,7 +95,7 @@ class PlantsPage extends Component {
             <div>
                 <Weather />
 
-                <UserTitle>{this.state.user.firstName}'s Plants</UserTitle>
+                <UserTitle>{this.state.user.firstName} {this.state.user.lastName}'s Plants</UserTitle>
                 <Email><BoldSpan>E-mail: </BoldSpan>{this.state.user.email}</Email>
                 <PlantList>
                     {plantsList}
@@ -103,11 +106,11 @@ class PlantsPage extends Component {
                         Back to Users
                     </Button>
                 </Link >
-                {/* <NewPlantForm 
+                <NewPlantForm 
                     createNewPlant={this.createNewPlant}
                     handlePlantChange={this.handlePlantChange}
                     plant={this.state.plant}
-                    /> */}
+                    />
 
             </div>
 

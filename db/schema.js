@@ -40,6 +40,7 @@ const GardenSchema = new Schema(
             type: Number,
             default: 6
         },
+        description: String,
         costOfPlot: {
             type: Number,
             default: 200
