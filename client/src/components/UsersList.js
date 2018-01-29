@@ -87,7 +87,6 @@ class UsersList extends Component {
             email: ''
         }
         await axios.post(`/api/gardens/${this.state.garden._id}/users`, payload)
-
         await this.getAllUsers()
         this.setState({
             addFormShowing: false,
@@ -167,6 +166,7 @@ class UsersList extends Component {
                             </div>)
                         })
                     }
+                    {/* <div classname='userContainer'><UserContainer>plus button</UserContainer></div> */}
                 </UserListContainer>
 
                 {
@@ -191,7 +191,6 @@ class UsersList extends Component {
                                     updateGarden={this.updateGarden}
                                     garden={this.state.garden}
                                     handleGardenChange={this.handleGardenChange}
-                                    // redirect={this.state.redirect} 
                                     editFormShowing={this.editFormShowing} />
                             </div>
                             : null

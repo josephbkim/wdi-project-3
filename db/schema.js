@@ -8,7 +8,7 @@ const PlantSchema = new Schema(
     {
         name: String,
         sunlightNeeded: String,
-        quanity: Number,
+        quantity: Number,
     },
     {
         timestamps: {}

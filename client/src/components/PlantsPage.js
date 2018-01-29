@@ -3,11 +3,16 @@ import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import Weather from './Weather'
-// import PlantsList from './PlantsList'
+import NewPlantForm from './NewPlantForm'
 
 class PlantsPage extends Component {
     state = {
-        user: {}
+        user: {},
+        plant: {
+            name: '',
+            quantity: '',
+            sunlightNeeded: ''
+        }
     }
 
     componentWillMount = () => {
@@ -26,8 +31,34 @@ class PlantsPage extends Component {
         }
     }
 
-    createNewPlant = () => {
-        
+    handlePlantChange = (event) => {
+        event.preventDefault()
+        const plant = { ...this.state.user }
+        plant[event.target.name] = event.target.name 
+        this.setState({
+            plant
+        })
+
+    }
+
+    createNewPlant = async (event) => {
+        event.preventDefault()
+        const gardenId = this.props.match.params.gardenId
+        const userId = this.props.match.params.userId
+        const payload = {
+            name: this.state.plant.name,
+            plant: this.state.plant.quantity
+        }
+        const blankForm = {
+            name: '',
+            plant: ''
+        }
+        await axios.post(`/api/gardens/${this.state.gardenId}/users/${userId}/plants`, payload)
+        await this.getAllUsers()
+        this.setState({
+            addFormShowing: false,
+            user: blankForm
+        })
     }
 
     render() {
@@ -36,8 +67,8 @@ class PlantsPage extends Component {
         if (this.state.user && this.state.user.plants) {
             plantsList = this.state.user.plants.map((plant, index) => {
                 return <Plant key={index}>
-                            <div>{plant.name}</div>
-                            <div> {plant.quantity}</div>
+                            <div>{plant.quantity} {plant.name}</div>
+                            
                         </Plant>
             })
         }
@@ -47,6 +78,7 @@ class PlantsPage extends Component {
                 <Weather />
 
                 <UserTitle>{this.state.user.firstName}'s Plants</UserTitle>
+                <Email><BoldSpan>E-mail: </BoldSpan>{this.state.user.email}</Email>
                 <PlantList>
                     {plantsList}
 
@@ -56,6 +88,11 @@ class PlantsPage extends Component {
                         Back to Users
                     </Button>
                 </Link >
+                {/* <NewPlantForm 
+                    createNewPlant={this.createNewPlant}
+                    handlePlantChange={this.handlePlantChange}
+                    plant={this.state.plant}
+                    /> */}
 
             </div>
 
@@ -103,4 +140,13 @@ margin: 8px;
 `
 const UserTitle = styled.h5`
     padding-left: 20px;
+`
+
+const Email = styled.div`
+    font-size: 16px;
+    padding-left: 20px;
+`
+
+const BoldSpan = styled.span`
+    font-weight: bold;
 `
