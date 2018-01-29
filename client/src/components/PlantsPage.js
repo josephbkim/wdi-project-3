@@ -4,6 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import Weather from './Weather'
 import NewPlantForm from './NewPlantForm'
+import GoTrashcan from 'react-icons/lib/go/trashcan'
 
 class PlantsPage extends Component {
     state = {
@@ -61,6 +62,18 @@ class PlantsPage extends Component {
         })
     }
 
+    deletePlant = async (plant) => {
+        try {
+            const gardenId = this.props.match.params.gardenId
+            const userId = this.props.match.params.userId
+            axios.delete(`/api/gardens/${gardenId}/users/${userId}/plants/${plant._id}`)
+            window.location.reload()
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
 
         let plantsList = []
@@ -68,6 +81,7 @@ class PlantsPage extends Component {
             plantsList = this.state.user.plants.map((plant, index) => {
                 return <Plant key={index}>
                             <div>{plant.quantity} {plant.name}</div>
+                            <TrashIcon type="submit" onClick={() => this.deletePlant(plant)}><GoTrashcan /> </TrashIcon>
                             
                         </Plant>
             })
@@ -149,4 +163,16 @@ const Email = styled.div`
 
 const BoldSpan = styled.span`
     font-weight: bold;
+`
+
+const TrashIcon = styled.div`
+    font-size: 16px;
+    color: #6b983f;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    &:hover {
+        color: #571B0D;
+}
 `
