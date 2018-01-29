@@ -26,10 +26,10 @@ Garden.remove({}).then(() => {
         into a usable recreation area for residents to enjoy.'
     })
     // seed User
-    const lindsay = new User({
-        firstName: 'Lindsay' ,
-        lastName: 'Lohan',
-        email: 'lulu@gmail.com',
+    const martha = new User({
+        firstName: 'Martha' ,
+        lastName: 'Stewart',
+        email: 'martha@gmail.com',
         share: true
     })
     // seed Plants
@@ -53,11 +53,11 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Average',
         quantity: 5
     })
-    lindsay.plants.push(kale, squash, pepper, greenBean)
-    const suzeanne = new User({
-        firstName: 'Suzanne' ,
-        lastName: 'Sommers',
-        email: 'suzanne@gmail.com',
+    martha.plants.push(kale, squash, pepper, greenBean)
+    const ruth = new User({
+        firstName: 'Ruth' ,
+        lastName: 'Smith',
+        email: 'ruth@gmail.com',
         share: true
     })
     const tomato = new Plant({
@@ -70,11 +70,11 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Average',
         quantity: 7
     })
-    suzeanne.plants.push(tomato, zucchini)
-    const patty = new User({
-        firstName: 'Patty',
-        lastName: 'Arquette',
-        email: 'patty@gmail.com',
+    ruth.plants.push(tomato, zucchini)
+    const agatha = new User({
+        firstName: 'Agatha',
+        lastName: 'Christie',
+        email: 'agatha@gmail.com',
         share: true
     })
     const hydrangea = new Plant({
@@ -97,11 +97,11 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Some',
         quantity: 6
     })
-    patty.plants.push(hydrangea, daisy, sunflower)
-    const john = new User({
-        firstName: 'John',
-        lastName: 'Smith',
-        email: 'john@gmail.com',
+    agatha.plants.push(hydrangea, daisy, sunflower)
+    const hermione = new User({
+        firstName: 'Hermione',
+        lastName: 'Potter',
+        email: 'voldemort@gmail.com',
         share: true
     })
     const orange = new Plant({
@@ -124,8 +124,8 @@ Garden.remove({}).then(() => {
         sunlightNeeded: 'A lot',
         quantity: 6
     })
-    john.plants.push(orange, lemon, lime, rose)
-    lostCorner.users.push(lindsay, suzeanne, patty, john)
+    hermione.plants.push(orange, lemon, lime, rose)
+    lostCorner.users.push(martha, ruth, agatha, hermione)
     return lostCorner.save()
 }).then(() => {
     const grantParkGarden = new Garden({
@@ -135,10 +135,10 @@ Garden.remove({}).then(() => {
         state: 'GA',
         description: 'A non-profit group created in conjunction with the City of Atlanta to help turn this beautiful 15 acre preserve into a usable recreation area for residents to enjoy.'
     })
-    const lindsay = new User({
-        firstName: 'Lindsay' ,
-        lastName: 'Lohan',
-        email: 'lulu@gmail.com',
+    const ray = new User({
+        firstName: 'Ray' ,
+        lastName: 'Lewis',
+        email: 'raylewis@gmail.com',
         share: true
     })
     // seed Plants
@@ -162,11 +162,11 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Average',
         quantity: 5
     })
-    lindsay.plants.push(kale, squash, pepper, greenBean)
-    const suzeanne = new User({
-        firstName: 'Suzanne' ,
-        lastName: 'Sommers',
-        email: 'suzanne@gmail.com',
+    ray.plants.push(kale, squash, pepper, greenBean)
+    const brian = new User({
+        firstName: 'Brian' ,
+        lastName: 'Urlacher',
+        email: 'bri@gmail.com',
         share: true
     })
     const tomato = new Plant({
@@ -179,11 +179,11 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Average',
         quantity: 7
     })
-    suzeanne.plants.push(tomato, zucchini)
-    const patty = new User({
-        firstName: 'Patty',
-        lastName: 'Arquette',
-        email: 'patty@gmail.com',
+    brian.plants.push(tomato, zucchini)
+    const greg = new User({
+        firstName: 'Greg',
+        lastName: 'Ostertag',
+        email: 'greg@gmail.com',
         share: true
     })
     const hydrangea = new Plant({
@@ -208,8 +208,8 @@ Garden.remove({}).then(() => {
     })
 
     
-    patty.plants.push(hydrangea, daisy, sunflower)
-    grantParkGarden.users.push(lindsay, suzeanne, patty)
+    greg.plants.push(hydrangea, daisy, sunflower)
+    grantParkGarden.users.push(ray, brian, greg)
     return grantParkGarden.save()
 }).then(() => {
     const cantonStGardens = new Garden({

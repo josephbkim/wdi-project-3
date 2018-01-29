@@ -35,7 +35,7 @@ class PlantsPage extends Component {
     handlePlantChange = (event) => {
         event.preventDefault()
         const plant = { ...this.state.user }
-        plant[event.target.name] = event.target.name 
+        plant[event.target.name] = event.target.name
         this.setState({
             plant
         })
@@ -79,11 +79,12 @@ class PlantsPage extends Component {
         let plantsList = []
         if (this.state.user && this.state.user.plants) {
             plantsList = this.state.user.plants.map((plant, index) => {
-                return <Plant key={index}>
-                            <div>{plant.quantity} {plant.name}</div>
+                return <div>
+                            <Plant key={index}>
+                                <div>{plant.quantity} {plant.name}</div>
+                            </Plant>
                             <TrashIcon type="submit" onClick={() => this.deletePlant(plant)}><GoTrashcan /> </TrashIcon>
-                            
-                        </Plant>
+                        </div>
             })
         }
 

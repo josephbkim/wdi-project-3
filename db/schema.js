@@ -18,6 +18,7 @@ const PlantSchema = new Schema(
 const UserSchema = new Schema(
     {
         firstName: String,
+        lastName: String,
         email: String,
         share: Boolean,
         plants: [PlantSchema]
