@@ -206,6 +206,8 @@ Garden.remove({}).then(() => {
         sunlightNeeded:'Some',
         quantity: 6
     })
+
+    
     patty.plants.push(hydrangea, daisy, sunflower)
     grantParkGarden.users.push(lindsay, suzeanne, patty)
     return grantParkGarden.save()

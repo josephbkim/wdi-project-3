@@ -6,6 +6,7 @@ import GardenDetail from './GardenDetail'
 import GardenEdit from './GardenEdit'
 import NewUserForm from './NewUserForm'
 import Weather from './Weather'
+import GoTrashcan from 'react-icons/lib/go/trashcan'
 
 class UsersList extends Component {
     state = {
@@ -17,7 +18,8 @@ class UsersList extends Component {
             email: ''
         },
         editFormShowing: false,
-        addFormShowing: false
+        addFormShowing: false,
+        redirect: false
     }
 
     componentWillMount = () => {
@@ -89,6 +91,23 @@ class UsersList extends Component {
         await this.getAllUsers()
     }
 
+    deleteUser = async (user) => {
+        try {
+            axios.delete(`/api/gardens/${this.state.garden._id}/users/${user._id}`)
+            window.location.reload()
+            
+            // const indexToDelete = this.state.garden.users.indexOf(user)
+            // const newUsers = [...this.state.garden.users]
+            // newUsers.splice(indexToDelete, 1)
+            // this.setState({ 
+            //     users: newUsers 
+            // })
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     // ==============================
     //        FORM TOGGLERS
     // ==============================
@@ -110,6 +129,10 @@ class UsersList extends Component {
     }
 
     render() {
+        if (this.redirect) {
+            return <Redirect to={`/gardens/${garden._id}/users/`} />
+        }
+
 
         const garden = this.state.garden
         // const userCount = this.state.garden.users.length
@@ -133,6 +156,7 @@ class UsersList extends Component {
                                         <UserNameColor>{user.firstName}</UserNameColor>
                                     </UserContainer>
                                 </Link>
+                                <div type="submit" onClick={() => this.deleteUser(user)}><GoTrashcan /> </div>
                                 <PlantTypeCount>Types of Plants: {user.plants.length}</PlantTypeCount>
 
                             </div>)
