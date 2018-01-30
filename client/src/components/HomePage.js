@@ -8,13 +8,16 @@ class HomePage extends Component {
         return (
             <div>
                 <BackgroundDiv>
-                    <Link to={`/gardens`}>Go to Gardens</Link>
-                    <ImageContainer>
 
-                        <HomepageImage src='https://cdn.onlinewebfonts.com/svg/img_35711.png' alt='garden-hand' />
-                        <HomepageImage src='https://d30y9cdsu7xlg0.cloudfront.net/png/308785-200.png' alt='flowers' />
-                        <HomepageImage src='http://www.pvhc.net/img209/khfvchtrrhwakwzlafnr.png' alt='garden-hand' />
+                    <ImageContainer>
+                        <Link to={`/gardens`}>
+                            <HomepageImage src='https://cdn.onlinewebfonts.com/svg/img_35711.png' alt='garden-hand' />
+                            {/* <HomepageImage src='https://d30y9cdsu7xlg0.cloudfront.net/png/308785-200.png' alt='flowers' />
+                        <HomepageImage src='http://www.pvhc.net/img209/khfvchtrrhwakwzlafnr.png' alt='garden-hand' /> */}
+                        <SplashText>FIND YOUR GARDEN</SplashText>
+                        </Link>
                     </ImageContainer>
+
                 </BackgroundDiv>
             </div>
         )
@@ -32,11 +35,23 @@ const BackgroundDiv = styled.div`
 `
 
 const HomepageImage = styled.img`
-    width: 200px;
+    width: 300px;
+    height: 180px;
     border-radius: 5px;
 `
 
 const ImageContainer = styled.div`
-    /* display: flex; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-right: 20px;
 
+
+`
+
+const SplashText = styled.div`
+    color: #571B0D;
+    &:hover {
+        color: #6B983F;
+    }
 `
