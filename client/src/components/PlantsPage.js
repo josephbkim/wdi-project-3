@@ -83,11 +83,12 @@ class PlantsPage extends Component {
         if (this.state.user && this.state.user.plants) {
             plantsList = this.state.user.plants.map((plant, index) => {
                 return <div>
-                            <Plant key={index}>
-                                <div>{plant.quantity} {plant.name}</div>
-                            </Plant>
-                            <TrashIcon type="submit" onClick={() => this.deletePlant(plant)}><GoTrashcan /> </TrashIcon>
-                        </div>
+                    <Plant key={index}>
+                        <div>{plant.quantity}</div>
+                        <div>{plant.name}</div>
+                    </Plant>
+                    <TrashIcon type="submit" onClick={() => this.deletePlant(plant)}><GoTrashcan /> </TrashIcon>
+                </div>
             })
         }
 
@@ -106,11 +107,11 @@ class PlantsPage extends Component {
                         Back to Users
                     </Button>
                 </Link >
-                <NewPlantForm 
+                <NewPlantForm
                     createNewPlant={this.createNewPlant}
                     handlePlantChange={this.handlePlantChange}
                     plant={this.state.plant}
-                    />
+                />
 
             </div>
 
@@ -130,22 +131,32 @@ const PlantList = styled.div`
     display: flex;
     flex-wrap: wrap;
     max-width: 700px;
+    @media (max-width: 700px) {
+        padding: 0 16px;
+        
+    }
 `
 
 const Plant = styled.div`
     border: 8px #571B0D solid; 
     width: 180px; 
     height: 180px;
-    margin: 20px;
+    margin: 30px 20px 20px 10px;
     padding: 10px;
-    border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
     &:hover {
         border: 8px #6B983F solid;
         color: #571B0D;
     }
+    @media (max-width: 700px) {
+    width: 100px;
+    height: 100px;
+    margin: 25px 10px 0px 10px;
+  }
 `
 
 const Button = styled.button`
@@ -171,6 +182,7 @@ const BoldSpan = styled.span`
 
 const TrashIcon = styled.div`
     font-size: 16px;
+    padding-bottom: 10px;
     color: #6b983f;
     width: 50px;
     display: flex;

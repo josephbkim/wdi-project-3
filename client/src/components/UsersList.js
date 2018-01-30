@@ -41,7 +41,7 @@ class UsersList extends Component {
         event.preventDefault()
         const user = { ...this.state.user }
         user[event.target.name] = event.target.value
-        this.setState({user})
+        this.setState({ user })
     }
 
     // ==============================
@@ -98,7 +98,7 @@ class UsersList extends Component {
         try {
             axios.delete(`/api/gardens/${this.state.garden._id}/users/${user._id}`)
             window.location.reload()
-            
+
             // const indexToDelete = this.state.garden.users.indexOf(user)
             // const newUsers = [...this.state.garden.users]
             // newUsers.splice(indexToDelete, 1)
@@ -139,14 +139,14 @@ class UsersList extends Component {
         console.log("USERCOUNT", userCount)
 
         return (
-            <div> 
-                
+            <div>
+
                 <GardenDetail
                     garden={this.state.garden}
                     userCount={userCount}
                 />
 
-                <div>Weather Detail in {this.state.garden.city}</div>
+                <AboveWeather>Weather Detail in {this.state.garden.city}</AboveWeather>
                 <Weather />
 
                 <UserListContainer>
@@ -157,7 +157,7 @@ class UsersList extends Component {
                                 <Link to={`/gardens/${garden._id}/users/${user._id}/plants`}>
                                     <UserContainer>
                                         <UserNameColor>{user.firstName}</UserNameColor>
-                                        
+
                                     </UserContainer>
                                 </Link>
                                 <PlantTypeCount>Types of Plants: {user.plants.length}</PlantTypeCount>
@@ -227,6 +227,9 @@ const UserListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     max-width: 615px;
+    @media (max-width: 700px) {
+
+  }
     `
 
 const Button = styled.button`
@@ -242,8 +245,8 @@ const UserContainer = styled.div`
     border: 8px #571B0D solid; 
     width: 150px; 
     height: 150px;
-    margin: 20px 20px 8px 20px;
-    padding: 10px;
+    margin: 20px 20px 8px 10px;
+    padding: 20px 10px 10px 10px;
     border-radius: 2px;
     display: flex;
     justify-content: center;
@@ -253,8 +256,16 @@ const UserContainer = styled.div`
         border: 8px #6B983F solid;
         color: #571B0D;
     }
+    @media (max-width: 700px) {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    margin: 25px 10px 0px 10px;
+  }
     `
-
+const AboveWeather = styled.div`
+    padding-left: 20px;
+`
 const newFormStyle = {
     // border: '5px solid green',
     // backgroundColor: '#BEEE62',
@@ -268,6 +279,13 @@ const UserNameColor = styled.div`
     color: #6B983F;
     text-transform: uppercase;
     font-size: 20px;
+    @media (max-width: 700px) {
+        width: 100px;
+        height: 100px;
+        padding: 5px;
+        margin: 25px 10px 0px 10px;
+        font-size: 12px;
+  }
 `
 const PlantTypeCount = styled.div`
     color: #571B0D;

@@ -65,4 +65,7 @@ const LogoImg = styled.img`
 
 const Body = styled.body`
 padding-left: 40px;
+@media (max-width: 700px) {
+    padding: 0 16px;
+  }
 `

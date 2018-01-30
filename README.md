@@ -27,6 +27,7 @@ User Stories
 https://trello.com/b/9yjOIPP9/garden-share
 
 [Wireframes](https://i.imgur.com/6zohHDC.png)
+and
 [ERD's](https://i.imgur.com/BGn8IBU.png)
 
 ### Remaining goals:
