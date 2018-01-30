@@ -5,6 +5,9 @@ const router = express.Router()
 var moment = require('moment');
 moment().format()
 
+
+
+
 const city = 'Atlanta'
 const state = 'GA'
 
@@ -13,6 +16,7 @@ const url2 = `http://api.wunderground.com/api/500fc45859e1f98f/conditions/q/${st
 
 // current weather
 router.get('/current', (request, response) => {
+
     axios.get(url2)
         .then((response) => {
             console.log(response.data)
@@ -39,22 +43,22 @@ router.get('/historical', (request, response) => {
             weather.date1 = response.data
         }).then(() => {
             axios.get(`http://api.wunderground.com/api/500fc45859e1f98f/history_${dates.date2}/q/${state}/${city}.json`)
-            .then((response) => {
-                weather.date2 = response.data
-            })
+                .then((response) => {
+                    weather.date2 = response.data
+                })
         }).then(() => {
             axios.get(`http://api.wunderground.com/api/500fc45859e1f98f/history_${dates.date3}/q/${state}/${city}.json`)
-            .then((response) => {
-                weather.date3 = response.data
-            })
-        }).then(() => { 
-            response.json() 
+                .then((response) => {
+                    weather.date3 = response.data
+                })
+        }).then(() => {
+            response.json()
             response.json(weather.date1)
             response.json(weather.date2)
             response.json(weather.date3)
         })
         .catch((error) => { console.log(error) })
-    })
+})
 
 
 module.exports = router
