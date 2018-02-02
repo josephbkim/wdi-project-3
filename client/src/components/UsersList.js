@@ -66,7 +66,7 @@ class UsersList extends Component {
 
             console.log("this is updating to this garden:", this.state.garden.name)
             const response = await axios.patch(`/api/gardens/${this.state.garden._id}`, this.state.garden)
-            console.log("TESTING STATE", this.state.garden.users[0])
+            console.log(`STATE________${this.state.editFormShowing}`)
             this.setState({
                 garden: response.data,
                 editFormShowing: false

@@ -19,7 +19,7 @@ router.get('/current', (request, response) => {
 
     axios.get(url2)
         .then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             return response.data
         })
         .then((data) => { response.json(data) })

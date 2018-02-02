@@ -34,9 +34,10 @@ router.delete('/:gardenId', async (request, response) => {
 
 router.patch('/:gardenId', async (request, response) => {
     try {
+        
         const updatedGardenInfo = await Garden.findByIdAndUpdate(request.params.gardenId, request.body, {new: true})
-        garden.name = request.body.name
-        response.json(garden)
+        // garden.name = request.body.name
+        response.json(updatedGardenInfo)
     }
     catch (err) {
         console.log(err)
