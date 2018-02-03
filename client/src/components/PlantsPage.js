@@ -138,7 +138,10 @@ const PlantList = styled.div`
 `
 
 const Plant = styled.div`
+    background-image: url('https://image.flaticon.com/icons/svg/424/424067.svg');
+
     border: 8px #571B0D solid; 
+    color: #571B0D;
     width: 180px; 
     height: 180px;
     margin: 30px 20px 20px 10px;
@@ -156,7 +159,7 @@ const Plant = styled.div`
     width: 100px;
     height: 100px;
     margin: 25px 10px 0px 10px;
-  }
+}
 `
 
 const Button = styled.button`
