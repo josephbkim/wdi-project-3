@@ -224,7 +224,7 @@ Garden.remove({}).then(() => {
     })
     const lindsay = new User({
         firstName: 'Lindsay' ,
-        lastName: 'Lohan',
+        lastName: 'Green',
         email: 'lulu@gmail.com',
         share: true
     })

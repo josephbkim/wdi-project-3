@@ -86,6 +86,7 @@ class PlantsPage extends Component {
                     <Plant key={index}>
                         <div>{plant.quantity}</div>
                         <div>{plant.name}</div>
+                        <div>Plants</div>
                     </Plant>
                     <TrashIcon type="submit" onClick={() => this.deletePlant(plant)}><GoTrashcan /> </TrashIcon>
                 </div>
@@ -140,8 +141,10 @@ const PlantList = styled.div`
 const Plant = styled.div`
     background-image: url('https://image.flaticon.com/icons/svg/424/424067.svg');
 
-    border: 8px #571B0D solid; 
+    /* border: 8px #571B0D solid;  */
     color: #571B0D;
+    font-weight: bold;
+    font-size: 17px;
     width: 180px; 
     height: 180px;
     margin: 30px 20px 20px 10px;
@@ -150,10 +153,10 @@ const Plant = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     &:hover {
-        border: 8px #6B983F solid;
-        color: #571B0D;
+        /* border: 8px #6B983F solid; */
+        /* font-weight: bold; */
     }
     @media (max-width: 700px) {
     width: 100px;
