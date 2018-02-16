@@ -139,15 +139,58 @@ class UsersList extends Component {
         console.log("USERCOUNT", userCount)
 
         return (
-            <div>
+            <GardenShowUserList>
 
                 <GardenDetail
                     garden={this.state.garden}
                     userCount={userCount}
                 />
 
+                <Button onClick={this.toggleEditForm}>
+                    Edit Garden Info
+                </Button>
+                <div>
+                    {
+                        this.state.editFormShowing ?
+                            <div>
+                                <GardenEdit
+                                    updateGarden={this.updateGarden}
+                                    garden={this.state.garden}
+                                    handleGardenChange={this.handleGardenChange}
+                                    editFormShowing={this.editFormShowing} />
+                            </div>
+                            : null
+                    }
+                </div>
+
                 <AboveWeather>Weather Detail in {this.state.garden.city}</AboveWeather>
                 <Weather />
+                {
+                    <Link to={`/gardens`}>
+                        <Button>
+                            Back to Gardens
+                        </Button>
+                    </Link >
+                }
+
+                <Button onClick={this.toggleAddUserForm}>
+                    Add New Gardener
+                </Button>
+
+                <div>
+                    {
+                        this.state.addFormShowing ?
+                            <div>
+                                <NewUserForm
+                                    createNewUser={this.createNewUser}
+                                    user={this.state.user}
+                                    handleUserChange={this.handleUserChange}
+                                    addFormShowing={this.addFormShowing}
+                                />
+                            </div>
+                            : null
+                    }
+                </div>
 
                 <UserListContainer>
                     {
@@ -169,49 +212,8 @@ class UsersList extends Component {
                     {/* <div classname='userContainer'><UserContainer>plus button</UserContainer></div> */}
                 </UserListContainer>
 
-                {
-                    <Link to={`/gardens`}>
-                        <Button>
-                            Back to Gardens
-                        </Button>
-                    </Link >
-                }
 
-                <Button onClick={this.toggleEditForm}>
-                    Edit Garden Info
-                </Button>
-                <Button onClick={this.toggleAddUserForm}>
-                    Add New Gardener
-                </Button>
-                <div>
-                    {
-                        this.state.editFormShowing ?
-                            <div>
-                                <GardenEdit
-                                    updateGarden={this.updateGarden}
-                                    garden={this.state.garden}
-                                    handleGardenChange={this.handleGardenChange}
-                                    editFormShowing={this.editFormShowing} />
-                            </div>
-                            : null
-                    }
-                </div>
-                <div>
-                    {
-                        this.state.addFormShowing ?
-                            <div>
-                                <NewUserForm
-                                    createNewUser={this.createNewUser}
-                                    user={this.state.user}
-                                    handleUserChange={this.handleUserChange}
-                                    addFormShowing={this.addFormShowing}
-                                />
-                            </div>
-                            : null
-                    }
-                </div>
-
-            </div >
+            </GardenShowUserList >
         )
     }
 }
@@ -222,7 +224,7 @@ export default UsersList
 const UserListContainer = styled.div`
     background-color: #bfd964;
     border-radius: 5px;
-    margin: 20px;
+    /* margin: 10px 10px 0px 10px; */
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -303,4 +305,7 @@ const TrashIcon = styled.div`
     &:hover {
         color: #571B0D;
 }
+`
+const GardenShowUserList = styled.div`
+    padding-left: 40px;
 `
