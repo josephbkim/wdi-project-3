@@ -15,11 +15,19 @@ class GardensPage extends Component {
             address: '',
             city: '',
             state: ''
-        }
+        },
+        addFormShowing: false
     }
 
     componentWillMount = () => {
         this.getAllGardens()
+    }
+
+    toggleAddGardenForm = () => {
+        const addFormShowing = !this.state.addFormShowing
+        this.setState({
+            addFormShowing
+        })
     }
 
     async getAllGardens() {
@@ -89,21 +97,45 @@ class GardensPage extends Component {
             fontSize: 14,
             color: '#6b983f',
             padding: '20px',
-            
+
         }
 
+
+        const ToggleFormButton = styled.div`
+            border-radius: 5px;
+            background-color: #6B983F;
+            color: #bfd964;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 25px 10px 0 10px;
+            
+            width: 120px;
+`
+
         return (
-            <div>
+            <GardenList>
                 <h4>Find a shared garden near you!</h4>
                 <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
                 <div>
                     {gardensList}
                 </div>
                 <div>
-                    <NewGarden gardensList={gardensList} createGarden={this.createGarden}
-                        handleChange={this.handleChange} garden={this.state.garden} />
+                    <ToggleFormButton onClick={this.toggleAddGardenForm}>
+                        Add New Garden
+                    </ToggleFormButton>
+
+                    {
+                        this.state.addFormShowing ?
+                            <div>
+                                <NewGarden gardensList={gardensList} createGarden={this.createGarden}
+                                    handleChange={this.handleChange} garden={this.state.garden} />
+
+                            </div>
+                            : null
+                    }
+
                 </div>
-            </div>
+            </GardenList>
         )
     }
 }
@@ -125,7 +157,7 @@ const GardenSpan = styled.span`
         color: #571B0D;
     }
     `
-    
+
 const GardenContainer = styled.div`
     padding: 15px 10px 0px 10px;
     font-size: 20px;
@@ -133,4 +165,16 @@ const GardenContainer = styled.div`
 const CityState = styled.div`
     color: #571B0D;
     font-size: 12px;
+`
+const ToggleFormButton = styled.div`
+    border-radius: 5px;
+    background-color: #6B983F;
+    color: #bfd964;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px;
+    width: 120px;
+`
+const GardenList = styled.div`
+    padding-bottom: 100px;
 `

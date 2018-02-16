@@ -90,7 +90,7 @@ const WeatherDiv = styled.div`
     padding: 15px;   
     font-size: 18px;
     background-color: #A7DDE6;
-    margin: 15px 20px 45px 20px;
+    margin: 0px 20px 45px 20px;
     max-width: 350px;
     border-radius: 5px;
 `

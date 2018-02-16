@@ -10,6 +10,7 @@ function GardenEdit(props) {
         <div>
             <h6>Edit Shared Garden Info</h6>
             <form style={newFormStyle} onSubmit={props.updateGarden}>
+                <div><Button>Submit Updates</Button></div>
                 <div>
                     <label htmlFor="name">Garden Name</label>
                     <input onChange={props.handleGardenChange} name="name" type="text" value={props.garden.name} />
@@ -25,9 +26,6 @@ function GardenEdit(props) {
                 <div>
                     <label htmlFor="state">State</label>
                     <input onChange={props.handleGardenChange} name="state" type="text" value={props.garden.state} />
-                </div>
-                <div>
-                    <Button>Submit</Button>
                 </div>
             </form>
         </div>

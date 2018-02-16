@@ -31,7 +31,7 @@ const GardenDiv = styled.div`
     border-radius: 5px;
     margin: 0;
     padding: 20px;
-    max-width: 550px;
+        max-width: 400px;
 `
 const NameDiv = styled.div`
     font-size: 22px;

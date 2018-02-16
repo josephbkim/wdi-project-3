@@ -145,10 +145,21 @@ class UsersList extends Component {
                     garden={this.state.garden}
                     userCount={userCount}
                 />
-
-                <Button onClick={this.toggleEditForm}>
-                    Edit Garden Info
-                </Button>
+                <ButtonHolder>
+                    <Button onClick={this.toggleEditForm}>
+                        Edit Garden Info
+                    </Button>
+                    <div>
+                        {
+                            <Link to={`/gardens`}>
+                                <Button>
+                                    Back To All Gardens
+                        </Button>
+                            </Link >
+                        }
+                    </div>
+                </ButtonHolder>
+                
                 <div>
                     {
                         this.state.editFormShowing ?
@@ -163,15 +174,9 @@ class UsersList extends Component {
                     }
                 </div>
 
-                <AboveWeather>Weather Detail in {this.state.garden.city}</AboveWeather>
+
+                <AboveWeather>Current Weather in {this.state.garden.city}</AboveWeather>
                 <Weather />
-                {
-                    <Link to={`/gardens`}>
-                        <Button>
-                            Back to Gardens
-                        </Button>
-                    </Link >
-                }
 
                 <Button onClick={this.toggleAddUserForm}>
                     Add New Gardener
@@ -221,10 +226,14 @@ class UsersList extends Component {
 export default UsersList
 
 // ======== STYLED COMPONENTS ==========
+
+const ButtonHolder = styled.div`
+    display: flex;
+`
+
 const UserListContainer = styled.div`
     background-color: #bfd964;
     border-radius: 5px;
-    /* margin: 10px 10px 0px 10px; */
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -266,7 +275,8 @@ const UserContainer = styled.div`
   }
     `
 const AboveWeather = styled.div`
-    padding-left: 20px;
+    padding: 30px 0 0 20px;
+    color: #571B0D;
 `
 const newFormStyle = {
     // border: '5px solid green',
@@ -309,3 +319,4 @@ const TrashIcon = styled.div`
 const GardenShowUserList = styled.div`
     padding-left: 40px;
 `
+
