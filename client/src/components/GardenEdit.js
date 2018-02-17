@@ -8,7 +8,7 @@ function GardenEdit(props) {
         
     return (
         <div>
-            <h6>Edit Shared Garden Info</h6>
+            <EditGardenTitle>Edit Shared Garden Info</EditGardenTitle>
             <form style={newFormStyle} onSubmit={props.updateGarden}>
                 <div><Button>Submit Updates</Button></div>
                 <div>
@@ -53,3 +53,9 @@ const Button = styled.button`
     padding: 5px;
     margin: 8px;
     `
+
+const EditGardenTitle = styled.div`
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+`

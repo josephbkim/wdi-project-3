@@ -173,7 +173,8 @@ const ToggleFormButton = styled.div`
     border-radius: 5px;
     padding: 5px;
     margin: 8px;
-    width: 120px;
+    width: 150px;
+    text-align: center;
 `
 const GardenList = styled.div`
     padding-bottom: 100px;

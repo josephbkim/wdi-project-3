@@ -88,10 +88,11 @@ export default Weather
 const WeatherDiv = styled.div`
     color: #571B0D;
     padding: 15px;   
-    font-size: 18px;
+    font-size: 12px;
+    font-weight: bold;
     background-color: #A7DDE6;
-    margin: 0px 20px 45px 20px;
-    max-width: 350px;
+    margin: 0px 20px 45px 0;
+    max-width: 250px;
     border-radius: 5px;
 `
 const WeatherSpan = styled.span`
@@ -100,7 +101,8 @@ const WeatherSpan = styled.span`
 `
 
 const ShowMore = styled.button`
-    font-size: 14px;
+    margin-top: 10px;
+    font-size: 10px;
     text-align: right;
     &:hover {
         color: #571B0D;

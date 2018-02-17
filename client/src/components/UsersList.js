@@ -275,8 +275,11 @@ const UserContainer = styled.div`
   }
     `
 const AboveWeather = styled.div`
-    padding: 30px 0 0 20px;
+    padding: 30px 0 0 0px;
     color: #571B0D;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
 `
 const newFormStyle = {
     // border: '5px solid green',
