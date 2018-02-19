@@ -19,8 +19,12 @@ Other:
 - React Materialize
 - Heroku
 
-### Approach Taken
-I created 3 data models (Shared Gardens > Users (Gardeners) > Plants) each nested within the other and learned React.js in the process. I picked 3 simple models that would be good for CRUD and leveraging an external API's. 
+### More About the Project
+One of the main project requirements was to have 3 data models with a NoSQL database. I wanted these to all be nested and to incorporate an external API call. The data structure ended up being Gardens > Users (Gardeners) > Plants. I have full CRUD on all three models, except for update on Plants, which I will add soon. 
+
+I ended up using weather external API calls, as there are lots of great resources for this information. We didn't have much direction on server-side API calls, so it was fun figuring out how to structure this. Eventually I plan on incorporating some sort of notifications to users whenever they need to water their plants.
+
+This was the first time I used React for anything bigger than a single-page application and it was a great learning experience. It is seamlessly stuff on the page can update and change. I enjoyed playing around with toggling different items being available on the page, like forms and the weather widget. Also, I really like designing with styled-components and want to use them even more efficiently on my next project, and when I refactor this project.
 
 ### Planning and Project Management
 User Stories
