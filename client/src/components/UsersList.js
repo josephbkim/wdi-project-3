@@ -142,49 +142,52 @@ class UsersList extends Component {
         return (
             <GardenShowUserList>
                 <GardenDetailContainer>
-                    <GardenDetailColumn>
-                        <GardenDetail
-                            garden={this.state.garden}
-                            userCount={userCount}
-                        />
-                        <ButtonHolder>
-                            <Button onClick={this.toggleEditForm}>
-                                Edit Garden Info
-                    </Button>
-                            <div>
-                                {
-                                    <Link to={`/gardens`}>
-                                        <Button>
-                                            Back To All Gardens
-                        </Button>
-                                    </Link >
-                                }
-                            </div>
-                        </ButtonHolder>
-
-                        <div>
-                            {
-                                this.state.editFormShowing ?
-                                    <div>
-                                        <GardenEdit
-                                            updateGarden={this.updateGarden}
-                                            garden={this.state.garden}
-                                            handleGardenChange={this.handleGardenChange}
-                                            editFormShowing={this.editFormShowing} />
-                                    </div>
-                                    : null
-                            }
-                        </div>
-
-
-                        <AboveWeather>Current Weather in {this.state.garden.city}</AboveWeather>
-                        <Weather />
-                    </GardenDetailColumn>
+                    {/* <GardenDetailColumn> */}
+                    <GardenDetail
+                        garden={this.state.garden}
+                        userCount={userCount}
+                    />
 
                     <div>
                         <GardenImage src={this.state.garden.photo_url} alt="" />
                     </div>
                 </GardenDetailContainer>
+                <ButtonHolder>
+                    <Button onClick={this.toggleEditForm}>
+                        Edit Garden Info
+                    </Button>
+                    <div>
+                        {
+                            <Link to={`/gardens`}>
+                                <Button>
+                                    Back To All Gardens
+                        </Button>
+                            </Link >
+                        }
+                    </div>
+                </ButtonHolder>
+
+                <div>
+                    {
+                        this.state.editFormShowing ?
+                            <div>
+                                <GardenEdit
+                                    updateGarden={this.updateGarden}
+                                    garden={this.state.garden}
+                                    handleGardenChange={this.handleGardenChange}
+                                    editFormShowing={this.editFormShowing} />
+                            </div>
+                            : null
+                    }
+                </div>
+
+
+                <AboveWeather>Current Weather in {this.state.garden.city}</AboveWeather>
+                <Weather />
+                {/* </GardenDetailColumn> */}
+
+
+
 
                 <Button onClick={this.toggleAddUserForm}>
                     Add New Gardener
@@ -246,7 +249,7 @@ const UserListContainer = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    max-width: 615px;
+    max-width: 580px;
     @media (max-width: 700px) {
 
   }
@@ -309,7 +312,7 @@ const UserNameColor = styled.div`
         padding: 5px;
         margin: 25px 10px 0px 10px;
         font-size: 12px;
-  }
+        }
 `
 const PlantTypeCount = styled.div`
     color: #571B0D;
@@ -329,14 +332,19 @@ const TrashIcon = styled.div`
 }
 `
 const GardenShowUserList = styled.div`
-    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const GardenDetailContainer = styled.div`
     display: flex;
     padding: 20px;
     flex-direction: row;
+    @media (max-width: 700px) {
 
+    flex-direction: column;
+}
 `
 
 const GardenImage = styled.img`
@@ -344,12 +352,14 @@ const GardenImage = styled.img`
     border-radius: 5px;
     border: 5px solid #571B0D;
     margin: 10px;
+    @media (max-width: 700px) {
+
+    width: 350px;
+}
 `
 
 const GardenDetailColumn = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    
 `

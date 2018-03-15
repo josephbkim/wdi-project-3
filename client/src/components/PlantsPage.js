@@ -95,7 +95,7 @@ class PlantsPage extends Component {
         }
 
         return (
-            <div>
+            <PlantListContainer>
                 <Weather />
 
                 <UserTitle>{this.state.user.firstName} {this.state.user.lastName}'s Plants</UserTitle>
@@ -117,7 +117,7 @@ class PlantsPage extends Component {
 
                 <PageBottom></PageBottom>
 
-            </div>
+            </PlantListContainer>
         )
     }
 }
@@ -197,4 +197,10 @@ const TrashIcon = styled.div`
     &:hover {
         color: #571B0D;
 }
+`
+
+const PlantListContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
