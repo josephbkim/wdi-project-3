@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const Garden = require('../db/models/Garden')
 const axios = require('axios')
@@ -5,13 +7,11 @@ const router = express.Router()
 var moment = require('moment');
 moment().format()
 
-
-
-
 const city = 'Atlanta'
 const state = 'GA'
 
-const url = `https://api.weatherbit.io/v2.0/history/daily?city=${city},${state}&start_date=2018-01-27&end_date=2018-01-28&key=ab01c5618f2446f8a8b7efe555e0da4e`
+const apiKey = process.env.wunderground
+const url = `https://api.weatherbit.io/v2.0/history/daily?city=${city},${state}&start_date=2018-01-27&end_date=2018-01-28&key=${apiKey}`
 const url2 = `http://api.wunderground.com/api/500fc45859e1f98f/conditions/q/${state}/${city}.json`
 
 // current weather

@@ -22,6 +22,7 @@ Garden.remove({}).then(() => {
         address: '7300 Brandon Mill Road',
         city: 'Atlanta',
         state: 'GA',
+        photo_url: 'http://www.thelocalgood.ca/wp-content/uploads/2015/03/photo.jpg',
         description: 'A non-profit group created in conjunction with the City of Sandy Springs to help turn this beautiful 24 acre preserve\
         into a usable recreation area for residents to enjoy.'
     })
@@ -133,6 +134,7 @@ Garden.remove({}).then(() => {
         address: '970 Grant St',
         city: 'Atlanta',
         state: 'GA',
+        photo_url: 'http://www.thelocalgood.ca/wp-content/uploads/2015/03/photo.jpg',
         description: 'A non-profit group created in conjunction with the City of Atlanta to help turn this beautiful 15 acre preserve into a usable recreation area for residents to enjoy.'
     })
     const ray = new User({
@@ -218,6 +220,7 @@ Garden.remove({}).then(() => {
         city: 'Roswell',
         state: 'GA',
         totalNumberOfPlots: 4,
+        photo_url: 'http://www.thelocalgood.ca/wp-content/uploads/2015/03/photo.jpg',
         description: 'A non-profit group created in conjunction with\
         the City of Roswell to help turn this beautiful 15 acre preserve\
         into a usable recreation area for residents to enjoy.'

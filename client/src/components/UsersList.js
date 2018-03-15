@@ -7,6 +7,7 @@ import GardenEdit from './GardenEdit'
 import NewUserForm from './NewUserForm'
 import Weather from './Weather'
 import GoTrashcan from 'react-icons/lib/go/trashcan'
+import { PageBottom } from './Styles'
 
 class UsersList extends Component {
     state = {
@@ -140,43 +141,50 @@ class UsersList extends Component {
 
         return (
             <GardenShowUserList>
-
-                <GardenDetail
-                    garden={this.state.garden}
-                    userCount={userCount}
-                />
-                <ButtonHolder>
-                    <Button onClick={this.toggleEditForm}>
-                        Edit Garden Info
+                <GardenDetailContainer>
+                    <GardenDetailColumn>
+                        <GardenDetail
+                            garden={this.state.garden}
+                            userCount={userCount}
+                        />
+                        <ButtonHolder>
+                            <Button onClick={this.toggleEditForm}>
+                                Edit Garden Info
                     </Button>
-                    <div>
-                        {
-                            <Link to={`/gardens`}>
-                                <Button>
-                                    Back To All Gardens
-                        </Button>
-                            </Link >
-                        }
-                    </div>
-                </ButtonHolder>
-                
-                <div>
-                    {
-                        this.state.editFormShowing ?
                             <div>
-                                <GardenEdit
-                                    updateGarden={this.updateGarden}
-                                    garden={this.state.garden}
-                                    handleGardenChange={this.handleGardenChange}
-                                    editFormShowing={this.editFormShowing} />
+                                {
+                                    <Link to={`/gardens`}>
+                                        <Button>
+                                            Back To All Gardens
+                        </Button>
+                                    </Link >
+                                }
                             </div>
-                            : null
-                    }
-                </div>
+                        </ButtonHolder>
+
+                        <div>
+                            {
+                                this.state.editFormShowing ?
+                                    <div>
+                                        <GardenEdit
+                                            updateGarden={this.updateGarden}
+                                            garden={this.state.garden}
+                                            handleGardenChange={this.handleGardenChange}
+                                            editFormShowing={this.editFormShowing} />
+                                    </div>
+                                    : null
+                            }
+                        </div>
 
 
-                <AboveWeather>Current Weather in {this.state.garden.city}</AboveWeather>
-                <Weather />
+                        <AboveWeather>Current Weather in {this.state.garden.city}</AboveWeather>
+                        <Weather />
+                    </GardenDetailColumn>
+
+                    <div>
+                        <GardenImage src={this.state.garden.photo_url} alt="" />
+                    </div>
+                </GardenDetailContainer>
 
                 <Button onClick={this.toggleAddUserForm}>
                     Add New Gardener
@@ -216,6 +224,7 @@ class UsersList extends Component {
                     }
                     {/* <div classname='userContainer'><UserContainer>plus button</UserContainer></div> */}
                 </UserListContainer>
+                <PageBottom></PageBottom>
 
 
             </GardenShowUserList >
@@ -323,3 +332,24 @@ const GardenShowUserList = styled.div`
     padding-left: 40px;
 `
 
+const GardenDetailContainer = styled.div`
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+
+`
+
+const GardenImage = styled.img`
+    width: 400px;
+    border-radius: 5px;
+    border: 5px solid #571B0D;
+    margin: 10px;
+`
+
+const GardenDetailColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+`

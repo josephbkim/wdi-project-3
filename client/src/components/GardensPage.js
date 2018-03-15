@@ -6,6 +6,7 @@ import { Button } from 'react-materialize'
 import SubmitButton from './SubmitButton'
 import GoTrashcan from 'react-icons/lib/go/trashcan'
 import NewGarden from './NewGarden';
+import { PageBottom } from './Styles'
 
 class GardensPage extends Component {
     state = {
@@ -100,42 +101,32 @@ class GardensPage extends Component {
 
         }
 
-
-        const ToggleFormButton = styled.div`
-            border-radius: 5px;
-            background-color: #6B983F;
-            color: #bfd964;
-            border-radius: 5px;
-            padding: 5px;
-            margin: 25px 10px 0 10px;
-            
-            width: 120px;
-`
-
         return (
-            <GardenList>
-                <h4>Find a shared garden near you!</h4>
-                <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
-                <div>
-                    {gardensList}
-                </div>
-                <div>
-                    <ToggleFormButton onClick={this.toggleAddGardenForm}>
-                        Add New Garden
+                <GardenList>
+                    <h4>Find a shared garden near you!</h4>
+                    <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
+                    <div>
+                        {gardensList}
+                    </div>
+                    <div>
+                        <ToggleFormButton onClick={this.toggleAddGardenForm}>
+                            Add New Garden
                     </ToggleFormButton>
 
-                    {
-                        this.state.addFormShowing ?
-                            <div>
-                                <NewGarden gardensList={gardensList} createGarden={this.createGarden}
-                                    handleChange={this.handleChange} garden={this.state.garden} />
+                        {
+                            this.state.addFormShowing ?
+                                <div>
+                                    <NewGarden gardensList={gardensList} createGarden={this.createGarden}
+                                        handleChange={this.handleChange} garden={this.state.garden} />
 
-                            </div>
-                            : null
-                    }
+                                </div>
+                                : null
+                        }
 
-                </div>
-            </GardenList>
+                    </div>
+
+                    <PageBottom></PageBottom>
+                </GardenList>
         )
     }
 }
@@ -176,6 +167,7 @@ const ToggleFormButton = styled.div`
     width: 150px;
     text-align: center;
 `
+
 const GardenList = styled.div`
     padding-bottom: 100px;
 `

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Weather from './Weather'
 import NewPlantForm from './NewPlantForm'
 import GoTrashcan from 'react-icons/lib/go/trashcan'
+import {PageBottom} from './Styles'
 
 class PlantsPage extends Component {
     state = {
@@ -114,12 +115,11 @@ class PlantsPage extends Component {
                     plant={this.state.plant}
                 />
 
+                <PageBottom></PageBottom>
+
             </div>
-
-
         )
     }
-
 }
 
 export default PlantsPage
