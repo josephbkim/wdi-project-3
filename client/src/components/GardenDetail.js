@@ -26,7 +26,6 @@ const GardenDetail = (props) => {
 
 export default GardenDetail
 
-
 const GardenDiv = styled.div`
     
     color: #6b983f;
@@ -48,6 +47,4 @@ const BoldSpan = styled.span`
     font-weight: bold;
 `
 
-const GardenImage = styled.img`
-    width: 400px;
-`
+
