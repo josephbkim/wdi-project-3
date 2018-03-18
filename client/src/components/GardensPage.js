@@ -7,6 +7,7 @@ import SubmitButton from './SubmitButton'
 import GoTrashcan from 'react-icons/lib/go/trashcan'
 import NewGarden from './NewGarden';
 import { PageBottom } from './Styles'
+import {Collapse} from 'react-collapse';
 
 class GardensPage extends Component {
     state = {
@@ -102,31 +103,30 @@ class GardensPage extends Component {
         }
 
         return (
-                <GardenList>
-                    <h4>Find a shared garden near you!</h4>
-                    <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
-                    <div>
-                        {gardensList}
-                    </div>
-                    <div>
+            <GardenList>
+                <h4>Find a shared garden near you!</h4>
+                <p>You can have your very own plot, where you can grow your favorite herbs, flowers, or plants.</p>
+                <div>
+                    {gardensList}
+                </div>
+                
+                    <NewContainer>
                         <ToggleFormButton onClick={this.toggleAddGardenForm}>
                             Add New Garden
-                    </ToggleFormButton>
-
-                        {
-                            this.state.addFormShowing ?
+                        </ToggleFormButton>
+                        <Collapse isOpened={this.state.addFormShowing}>
                                 <div>
                                     <NewGarden gardensList={gardensList} createGarden={this.createGarden}
                                         handleChange={this.handleChange} garden={this.state.garden} />
 
                                 </div>
-                                : null
-                        }
+                        </Collapse>
+                    </NewContainer>
 
-                    </div>
+                
 
-                    <PageBottom></PageBottom>
-                </GardenList>
+                <PageBottom></PageBottom>
+            </GardenList>
         )
     }
 }
@@ -171,6 +171,12 @@ const ToggleFormButton = styled.div`
 const GardenList = styled.div`
     padding-bottom: 100px;
     display: flex; 
+    flex-direction: column;
+    align-items: center;
+`
+
+const NewContainer = styled.div`
+        display: flex; 
     flex-direction: column;
     align-items: center;
 `

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 function NewGarden(props) {
     return (
-        <div>
+        <NewGardenFormContainer>
             <h6>Do you own a shared garden space? Sign up below to track your garden and the gardeners sharing the space</h6>
             <div>
                 <form style={newFormStyle} onSubmit={props.createGarden}>
@@ -38,7 +38,7 @@ function NewGarden(props) {
 
                 </form>
             </div>
-        </div>
+        </NewGardenFormContainer>
     )
 }
 
@@ -54,3 +54,9 @@ const newFormStyle = {
     padding: '20px',
     
 }
+
+const NewGardenFormContainer = styled.div`
+        display: flex; 
+    flex-direction: column;
+    align-items: center;
+`
